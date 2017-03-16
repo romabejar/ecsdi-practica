@@ -1,0 +1,581 @@
+<?xml version="1.0"?>
+
+<jacob version="3.0">
+
+<object type="PrometheusProject" id="0">
+    <field name="projectData">
+	<object type="ProjectData" id="1">
+	    <field name="name">Planificacion de una visita turístico-cultural a una ciudad</field>
+	    <field name="description">Es un conjunto de agentes/servicios capaces de planificar una visita turístico-cultural a una ciudad en sentido amplio.
+Esta planificación se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
+El sistema consta de servicios que filtran/obtienen/seleccionan toda la información necesaria, los servicios que generan esa planificación y todos aquellos servicios
+que son adicionales, que permiten gestionar todos los elementos que forman parte de una solución.
+Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo.</field>
+	    <field name="fileNameLastSavedAs">Planificacion de una visita turístico-cultural a una ciudad.pd</field>
+	    <field name="filePathLastSavedIn">/home/german/Escritorio/ECSDI/Prometheus/ecsdi-practica/Documentación</field>
+	    <field name="openedAs">/home/german/Escritorio/ECSDI/Prometheus/ecsdi-practica/Documentación/Planificacion de una visita turístico-cultural a una ciudad.pd</field>
+	    <field name="author">Romà Bejar, Germán Mora, Sergi Muñoz</field>
+	    <field name="applicationVersion">3.3b_internal</field>
+	</object>
+    </field>
+    <field name="diagramSettings"><list>
+	<object type="DiagramSettings" id="2">
+	    <field name="diagramId">
+		<object type="DiagramId" id="3">
+		    <field name="stringId">Analysis Overview</field>
+		</object>
+	    </field>
+	    <field name="entitySettings"><list>
+		<object type="DiagramEntitySetting" id="4">
+		    <field name="entity">
+			<object type="Actor" id="5">
+			    <base type="Entity">
+				<field name="name">Gestión Plan de viaje</field>
+				<field name="description">Realiza la petición de un plan de viaje por parte del actor Usuario, que recibe un paquete cerrado con todas las características necesarias para dicho viaje.
+Contiene a los agentes que representan al actor externo.</field>
+				<field name="uniqueId">1</field>
+				<field name="connectTo"><list>
+				    <object type="Action" id="6">
+					<base type="Interaction">
+					    <base type="Entity">
+						<field name="name">Ac. Buscar vuelos</field>
+						<field name="description">Se hace una busqueda de los vuelos dispobles</field>
+						<field name="uniqueId">5</field>
+						<field name="connectTo"><list>
+						    <object type="Actor" id="7">
+							<base type="Entity">
+							    <field name="name">Desplazamiento</field>
+							    <field name="description">Actor Desplazamiento</field>
+							    <field name="uniqueId">2</field>
+							    <field name="connectTo"><list>
+								<object type="Percept" id="8">
+								    <base type="Interaction">
+									<base type="Entity">
+									    <field name="name">Vuelos encontrados</field>
+									    <field name="uniqueId">9</field>
+									    <field name="connectTo"><list>
+										<object ref="5"/>
+										</list>
+									    </field>
+									</base>
+
+								    </base>
+
+								</object>
+								</list>
+							    </field>
+							</base>
+
+						    </object>
+						    </list>
+						</field>
+					    </base>
+
+					</base>
+
+					<field name="parameters"></field>
+					<field name="durationDescription"></field>
+					<field name="failureNotificationDescription"></field>
+					<field name="partialChange"></field>
+					<field name="sideEffects"></field>
+				    </object>
+
+				    <object type="Action" id="9">
+					<base type="Interaction">
+					    <base type="Entity">
+						<field name="name">Ac. Alojamiento</field>
+						<field name="description">Se hace una busqueda del alojamiento posible, para el usuario en los días que éste ha marcado</field>
+						<field name="uniqueId">8</field>
+						<field name="connectTo"><list>
+						    <object type="Actor" id="10">
+							<base type="Entity">
+							    <field name="name">Alojamiento</field>
+							    <field name="description">Actor Alojamiento</field>
+							    <field name="uniqueId">3</field>
+							    <field name="connectTo"><list>
+								<object type="Percept" id="11">
+								    <base type="Interaction">
+									<base type="Entity">
+									    <field name="name">Alojamiento encontrado</field>
+									    <field name="uniqueId">15</field>
+									    <field name="connectTo"><list>
+										<object ref="5"/>
+										</list>
+									    </field>
+									</base>
+
+								    </base>
+
+								</object>
+								</list>
+							    </field>
+							</base>
+
+						    </object>
+						    </list>
+						</field>
+					    </base>
+
+					</base>
+
+					<field name="parameters"></field>
+					<field name="durationDescription"></field>
+					<field name="failureNotificationDescription"></field>
+					<field name="partialChange"></field>
+					<field name="sideEffects"></field>
+				    </object>
+
+				    <object type="Action" id="12">
+					<base type="Interaction">
+					    <base type="Entity">
+						<field name="name">Ac. Actividades</field>
+						<field name="description">Se buscan todas las disponibles y de interesa en la fecha prevista de la visita</field>
+						<field name="uniqueId">6</field>
+						<field name="connectTo"><list>
+						    <object type="Actor" id="13">
+							<base type="Entity">
+							    <field name="name">Cjt. Actividades</field>
+							    <field name="description">Actor Conjunto de Actividades</field>
+							    <field name="uniqueId">4</field>
+							    <field name="connectTo"><list>
+								<object type="Percept" id="14">
+								    <base type="Interaction">
+									<base type="Entity">
+									    <field name="name">Cjt. Actividades dispponibles</field>
+									    <field name="uniqueId">16</field>
+									    <field name="connectTo"><list>
+										<object ref="5"/>
+										</list>
+									    </field>
+									</base>
+
+								    </base>
+
+								</object>
+								</list>
+							    </field>
+							</base>
+
+						    </object>
+						    </list>
+						</field>
+					    </base>
+
+					</base>
+
+					<field name="parameters"></field>
+					<field name="durationDescription"></field>
+					<field name="failureNotificationDescription"></field>
+					<field name="partialChange"></field>
+					<field name="sideEffects"></field>
+				    </object>
+				    </list>
+				</field>
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="15">
+			    <field name="x">428</field>
+			    <field name="y">372</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="16">
+		    <field name="entity">
+			<object ref="7"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="17">
+			    <field name="x">12</field>
+			    <field name="y">234</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="18">
+		    <field name="entity">
+			<object ref="10"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="19">
+			    <field name="x">384</field>
+			    <field name="y">38</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="20">
+		    <field name="entity">
+			<object ref="13"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="21">
+			    <field name="x">717</field>
+			    <field name="y">76</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="22">
+		    <field name="entity">
+			<object ref="6"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="23">
+			    <field name="x">62</field>
+			    <field name="y">346</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="24">
+		    <field name="entity">
+			<object ref="12"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="25">
+			    <field name="x">906</field>
+			    <field name="y">236</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="26">
+		    <field name="entity">
+			<object type="Percept" id="27">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="name">Crear plan de viaje</field>
+				    <field name="description">Se crea un plan de viaje para el usuario en funcion de las caracteristicas establecidas</field>
+				    <field name="uniqueId">7</field>
+				    <field name="connectTo"><list>
+					<object ref="5"/>
+					</list>
+				    </field>
+				</base>
+
+			    </base>
+
+			    <field name="source"></field>
+			    <field name="informationCarried"></field>
+			    <field name="knowledgeUpdated"></field>
+			    <field name="processing"></field>
+			    <field name="frequency"></field>
+			    <field name="externalPath"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="28">
+			    <field name="x">376</field>
+			    <field name="y">419</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="29">
+		    <field name="entity">
+			<object ref="9"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="30">
+			    <field name="x">476</field>
+			    <field name="y">113</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="31">
+		    <field name="entity">
+			<object ref="8"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="32">
+			    <field name="x">155</field>
+			    <field name="y">265</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="33">
+		    <field name="entity">
+			<object type="Actor" id="34">
+			    <base type="Entity">
+				<field name="name">Usuario</field>
+				<field name="description">Actor Usuario del sistema
+</field>
+				<field name="uniqueId">10</field>
+				<field name="connectTo"><list>
+				    <object ref="27"/>
+				    </list>
+				</field>
+			    </base>
+
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="35">
+			    <field name="x">440</field>
+			    <field name="y">495</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="36">
+		    <field name="entity">
+			<object type="Notes" id="37">
+			    <base type="Entity">
+				<field name="name">Actor Usuario entidad externa</field>
+				<field name="uniqueId">11</field>
+				<field name="connectTo"><list>
+				    <object ref="34"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="notes">Actor Usuario entidad externa</field>
+			    <field name="belongs"><list>
+				<object ref="34"/>
+				</list>
+			    </field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="38">
+			    <field name="x">564</field>
+			    <field name="y">482</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="39">
+		    <field name="entity">
+			<object type="Notes" id="40">
+			    <base type="Entity">
+				<field name="name">Actor Desplazamiento, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+				<field name="uniqueId">12</field>
+				<field name="connectTo"><list>
+				    <object ref="7"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="notes">Actor Desplazamiento, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+			    <field name="belongs"><list>
+				<object ref="7"/>
+				</list>
+			    </field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="41">
+			    <field name="x">28</field>
+			    <field name="y">59</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="42">
+		    <field name="entity">
+			<object type="Notes" id="43">
+			    <base type="Entity">
+				<field name="name">Actor Alojamiento, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+				<field name="uniqueId">13</field>
+				<field name="connectTo"><list>
+				    <object ref="10"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="notes">Actor Alojamiento, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+			    <field name="belongs"><list>
+				<object ref="10"/>
+				</list>
+			    </field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="44">
+			    <field name="x">205</field>
+			    <field name="y">10</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="45">
+		    <field name="entity">
+			<object type="Notes" id="46">
+			    <base type="Entity">
+				<field name="name">Actor Cjt. Actividades, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+				<field name="uniqueId">14</field>
+				<field name="connectTo"><list>
+				    <object ref="13"/>
+				    </list>
+				</field>
+			    </base>
+
+			    <field name="notes">Actor Cjt. Actividades, interacciona con su agente representante dentro del sistema de gestión del plan de vuelo</field>
+			    <field name="belongs"><list>
+				<object ref="13"/>
+				</list>
+			    </field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="47">
+			    <field name="x">887</field>
+			    <field name="y">26</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="48">
+		    <field name="entity">
+			<object ref="11"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="49">
+			    <field name="x">204</field>
+			    <field name="y">157</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="50">
+		    <field name="entity">
+			<object ref="14"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="51">
+			    <field name="x">559</field>
+			    <field name="y">188</field>
+			</object>
+		    </field>
+		</object>
+		</list>
+	    </field>
+	</object>
+	</list>
+    </field>
+    <field name="model">
+	<object type="PrometheusModelData" id="52">
+	    <field name="projectData">
+		<object ref="1"/>
+	    </field>
+	    <field name="actions"><list>
+		<object ref="6"/>
+
+		<object ref="12"/>
+
+		<object ref="9"/>
+		</list>
+	    </field>
+	    <field name="percepts"><list>
+		<object ref="27"/>
+
+		<object ref="8"/>
+
+		<object ref="11"/>
+
+		<object ref="14"/>
+		</list>
+	    </field>
+	    <field name="actors"><list>
+		<object ref="5"/>
+
+		<object ref="7"/>
+
+		<object ref="10"/>
+
+		<object ref="13"/>
+
+		<object ref="34"/>
+		</list>
+	    </field>
+	    <field name="systemOverviewDiagramData">
+		<object type="SystemOverviewDiagramData" id="53">
+		</object>
+	    </field>
+	    <field name="rolesDiagramData">
+		<object type="RolesDiagramData" id="54">
+		</object>
+	    </field>
+	    <field name="analysisOverviewDiagramData">
+		<object type="AnalysisOverviewDiagramData" id="55">
+		    <field name="entities"><list>
+			<object ref="5"/>
+
+			<object ref="7"/>
+
+			<object ref="10"/>
+
+			<object ref="13"/>
+
+			<object ref="6"/>
+
+			<object ref="12"/>
+
+			<object ref="27"/>
+
+			<object ref="9"/>
+
+			<object ref="8"/>
+
+			<object ref="34"/>
+
+			<object ref="37"/>
+
+			<object ref="40"/>
+
+			<object ref="43"/>
+
+			<object ref="46"/>
+
+			<object ref="11"/>
+
+			<object ref="14"/>
+			</list>
+		    </field>
+		</object>
+	    </field>
+	    <field name="notes"><list>
+		<object ref="37"/>
+
+		<object ref="40"/>
+
+		<object ref="43"/>
+
+		<object ref="46"/>
+		</list>
+	    </field>
+	    <field name="scenariosDiagramData">
+		<object type="ScenariosDiagramData" id="56">
+		</object>
+	    </field>
+	    <field name="goalOverviewDiagramData">
+		<object type="GoalOverviewDiagramData" id="57">
+		</object>
+	    </field>
+	    <field name="dataCouplingDiagramData">
+		<object type="DataCouplingDiagramData" id="58">
+		</object>
+	    </field>
+	    <field name="agentRoleCouplingDiagramData">
+		<object type="AgentRoleCouplingDiagramData" id="59">
+		</object>
+	    </field>
+	    <field name="agentOverviewDiagramData">
+		<object type="AgentOverviewDiagramData" id="60">
+		</object>
+	    </field>
+	    <field name="capabilityOverviewDiagramData">
+		<object type="CapabilityOverviewDiagramData" id="61">
+		</object>
+	    </field>
+	</object>
+    </field>
+</object>
+
+</jacob>
