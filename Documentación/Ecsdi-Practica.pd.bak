@@ -66,6 +66,7 @@
 								<field name="name">Ag. Gestor de Transporte</field>
 								<field name="description"></field>
 								<field name="uniqueId">159</field>
+								<field name="includeInReport">:false</field>
 							    </base>
 
 							    <field name="lifetime"></field>
@@ -117,6 +118,7 @@
 												    <base type="Entity">
 													<field name="name">Ag. Planificador</field>
 													<field name="uniqueId">87</field>
+													<field name="includeInReport">:false</field>
 												    </base>
 
 												    <field name="protocols"><list>
@@ -166,6 +168,7 @@
 																		<field name="name">Ag. Gestor Alojamiento y Actividades</field>
 																		<field name="description"></field>
 																		<field name="uniqueId">160</field>
+																		<field name="includeInReport">:false</field>
 																	    </base>
 
 																	    <field name="lifetime"></field>
@@ -205,6 +208,7 @@
 																				    <base type="Entity">
 																					<field name="name">Buscador Alojamiento</field>
 																					<field name="uniqueId">90</field>
+																					<field name="includeInReport">:false</field>
 																				    </base>
 
 																				</object>
@@ -237,6 +241,7 @@
 																				    <base type="Entity">
 																					<field name="name">Buscador Actividades</field>
 																					<field name="uniqueId">91</field>
+																					<field name="includeInReport">:false</field>
 																				    </base>
 
 																				</object>
@@ -333,6 +338,7 @@
 																				    <base type="Entity">
 																					<field name="name">Ag. Actualizador</field>
 																					<field name="uniqueId">221</field>
+																					<field name="includeInReport">:false</field>
 																				    </base>
 
 																				    <field name="goals"><list>
@@ -1197,6 +1203,7 @@ finish</field>
 																<field name="name">Cliente Web</field>
 																<field name="description"></field>
 																<field name="uniqueId">93</field>
+																<field name="includeInReport">:false</field>
 																<field name="connectTo"><list>
 																    <object type="Percept" id="75">
 																	<base type="Interaction">
@@ -1209,6 +1216,7 @@ finish</field>
 																			<base type="Entity">
 																			    <field name="name">SIstema</field>
 																			    <field name="uniqueId">88</field>
+																			    <field name="includeInReport">:false</field>
 																			    <field name="connectTo"><list>
 																				<object ref="73"/>
 
@@ -1222,6 +1230,7 @@ finish</field>
 																						    <base type="Entity">
 																							<field name="name">Admin. Pago</field>
 																							<field name="uniqueId">114</field>
+																							<field name="includeInReport">:false</field>
 																							<field name="connectTo"><list>
 																							    <object type="Percept" id="79">
 																								<base type="Interaction">
@@ -1241,6 +1250,7 @@ finish</field>
 																									<base type="Entity">
 																									    <field name="name">Ag. Administrativo</field>
 																									    <field name="uniqueId">122</field>
+																									    <field name="includeInReport">:false</field>
 																									</base>
 
 																									<field name="protocols"><list>
@@ -1308,6 +1318,7 @@ finish</field>
 																														    <field name="name">Ag. Pagador</field>
 																														    <field name="description"></field>
 																														    <field name="uniqueId">123</field>
+																														    <field name="includeInReport">:false</field>
 																														</base>
 
 																														<field name="lifetime"></field>
@@ -1872,6 +1883,7 @@ finish</field>
 																							<field name="name">Buscador Transporte</field>
 																							<field name="description"></field>
 																							<field name="uniqueId">89</field>
+																							<field name="includeInReport">:false</field>
 																						    </base>
 
 																						</object>
@@ -2295,6 +2307,7 @@ finish</field>
 					    <base type="Entity">
 						<field name="name">Ag. Autentificador</field>
 						<field name="uniqueId">148</field>
+						<field name="includeInReport">:false</field>
 					    </base>
 
 					    <field name="goals"><list>
@@ -4341,11 +4354,10 @@ finish</field>
 		    <field name="entity">
 			<object type="Notes" id="451">
 			    <base type="Entity">
-				<field name="name">yvgbhnjñ</field>
 				<field name="uniqueId">225</field>
+				<field name="includeInReport">:false</field>
 			    </base>
 
-			    <field name="notes">yvgbhnjñ</field>
 			</object>
 		    </field>
 		    <field name="location">
@@ -6281,8 +6293,6 @@ finish</field>
 			<object ref="123"/>
 
 			<object ref="24"/>
-
-			<object ref="451"/>
 			</list>
 		    </field>
 		</object>
@@ -6290,10 +6300,6 @@ finish</field>
 	    <field name="includeDictionaryInReport">:false</field>
 	    <field name="includeCrossCheckInformationInReport">:false</field>
 	    <field name="actorsDiagramNotes">Notes for Analysis</field>
-	    <field name="notes"><list>
-		<object ref="451"/>
-		</list>
-	    </field>
 	    <field name="scenariosDiagramData">
 		<object type="ScenariosDiagramData" id="670">
 		</object>
@@ -6645,6 +6651,10 @@ finish</field>
 
 		<object type="Entity" id="757">
 		    <field name="name">Ac. Informar valoracion</field>
+		</object>
+
+		<object type="Entity" id="758">
+		    <field name="name">yvgbhnjñ</field>
 		</object>
 		</list>
 	    </field>
