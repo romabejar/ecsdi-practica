@@ -2,17 +2,17 @@
 <body>
 <div align="center"><p>
 <b><font size="+3">Organizador del Plan de Viaje</font></b></p>
-</div><a name="Project Data"><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Organizador del Plan de Viaje</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Author</b></td><td bgcolor="#ffffff" valign="top">Roma Bejar, Cristian Jara, German Mora, Sergi M.</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Version</b></td><td bgcolor="#ffffff" valign="top">1.0</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Prometheus version</b></td><td bgcolor="#ffffff" valign="top">3.3b_internal</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Report generation date</b></td><td bgcolor="#ffffff" valign="top">2017-03-31</td></tr></table></div><br>
+</div><a name="Project Data"><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Organizador del Plan de Viaje</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Author</b></td><td bgcolor="#ffffff" valign="top">Roma Bejar, Cristian Jara, German Mora, Sergi Muñoz.</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Version</b></td><td bgcolor="#ffffff" valign="top">1.0</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Prometheus version</b></td><td bgcolor="#ffffff" valign="top">3.3b_internal</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Report generation date</b></td><td bgcolor="#ffffff" valign="top">2017-03-31</td></tr></table></div><br>
 
 <hr width="100%">
 <br>
 <div align="center"><p>
 <b><font size="+3">Brief Description of System</font></b></p>
 </div><p>
-Es un conjunto de agentes/servicios capaces de planificar una visita tur�stico-cultural a una ciudad en sentido amplio.
-Esta planificaci�n se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
-El sistema consta de servicios que filtran/obtienen/seleccionan toda la informaci�n necesaria, los servicios que generan esa planificaci�n y todos aquellos servicios
-que son adicionales, que permiten gestionar todos los elementos que forman parte de una soluci�n.
+Es un conjunto de agentes/servicios capaces de planificar una visita turístico-cultural a una ciudad en sentido amplio.
+Esta planificación se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
+El sistema consta de servicios que filtran/obtienen/seleccionan toda la información necesaria, los servicios que generan esa planificación y todos aquellos servicios
+que son adicionales, que permiten gestionar todos los elementos que forman parte de una solución.
 Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo</p>
 <br>
 
@@ -30,13 +30,58 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <hr width="100%">
 <a name="Analysis Overview"><div align="center"><p>
 <b><font size="+3">Analysis Overview Diagram</font></b></p>
-</div><div align="center"><img border="1" src="AnalysisOverviewDiagram.png"></div><br>
+</div>
+
+<p>
+  Para la realización de este diagrama hemos hecho un análisis global del sistema, empezando de forma cronológica con la primera interacción del Usuario (mediante el cliente web).
+</p>
+<p>
+  Así pues, tenemos que el sistema se va a lanzar cuando reciba una percepción del cliente web pidiéndole un plan de viaje. Entonces, el sistema dará comienzo a la búsqueda de los datos necesarios (transporte, alojamientos y actividades) según las exigencias recibidas por el usuario a través de sus respectivos Actores.
+</p>
+<p>
+  Una vez recabados los datos, el sistema recibe las percepciones Datos de Actividades, Datos de Alojamiento y Datos de Transporte, y monta el plan de viaje e informa del plan al usuario, para que sopese si le interesa o no.
+</p>
+<p>
+  Si el plan es aceptado, se procede a realizar el pago mediante el actor Admin. de Pago. Éste, genera una percepción que recoge el sistema y acciona la comunicación con el usuario, informándole de que el pago se ha realizado.
+</p>
+<p>
+  Una vez el usuario ha terminado el viaje, dado que el sistema tiene almacenadas las fechas del plan, se le pide una valoración al usuario para ser tratada de forma proactiva.
+</p>
+
+<div align="center"><img border="1" src="AnalysisOverviewDiagram.png"></div><br>
 
 <hr width="100%">
 <br>
 <a name="Goal Overview"><div align="center"><p>
 <b><font size="+3">Goal Overview Diagram</font></b></p>
-</div><div align="center"><img border="1" src="GoalOverviewDiagram.png"></div><br>
+</div>
+
+<p>
+  En esta visualización dejamos explícito el mapa de objetivos que hemos extraído de las funcionalidades que llevará a cabo nuestro sistema.
+</p>
+<p>
+  <!-- He puesto 4 bloques, porque habias escrito 5, pero solo habian 4-->
+  Constatamos 4 bloques interrelacionados entre ellos:
+</p>
+<ol>
+  <li>
+    Bloque Gestión del Plan de Viaje: deberá cumplir con la obtención de datos; tanto sobre los medios de transporte, como los alojamientos o las actividades.
+    Luego, esos datos requerirán ser filtrados en una Criba de opciones para Organizar el Plan, y finalmente, se informará de dicho plan para que el usuario pueda tomar una decisión.
+  </li>
+  <li>
+    Bloque Gestión de Pago, en el que para cumplirlo, primero es necesario realizar el pago -es decir, obtener los datos de pago y mandar propiamente a pagar- e informar del pago.
+  </li>
+  <li>
+    Bloque Actualizar datos. Para este objetivo, iremos obteniendo y escribiendo de forma periódica los datos externos en nuestra base de datos.
+  </li>
+  <li>
+    En el bloque de Autenticación, se cumplirá con el objetivo de registrar y con el de identificar o LogIn.
+  </li>
+</ol>
+
+
+
+<div align="center"><img border="1" src="GoalOverviewDiagram.png"></div><br>
 
 
 <!-- *************************************************************************************************** -->
@@ -50,6 +95,10 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <a name="Scenario"><div align="center"><p>
 <b><font size="+3">Scenarios</font></b></p>
 </div><br>
+
+<p>
+  A continuación se describen los escenarios de nuestro sistema.
+</p>
 
 <hr width="100%">
 <br>
@@ -109,7 +158,16 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <br>
 <a name="Roles"><div align="center"><p>
 <b><font size="+3">System Roles Diagram</font></b></p>
-</div><div align="center"><img border="1" src="RolesDiagram.png"></div><br>
+</div>
+
+<p>
+  En el siguiente diagrama vemos representados los roles del sistema, con sus percepciones y acciones que nos ayudan a cumplir todos los objetivos -de sus respectivos escenarios- descritos hasta el momento.
+</p>
+<p>
+De todos estos, por ser quizás el más complejo, parece merecer la pena hacer mención al rol Comunicador. Dicho rol, es el encargado de mantener siempre una vía de interacción y comunicación con el usuario en el transcurso de todo el proceso. Eso es: desde el momento en el que recibe su primera percepción de petición de plan, donde se informará del plan y, si acepta, del pago; hasta el momento de obtener la valoración del usuario sobre el viaje, una vez éste haya pasado. También recogerá información de las preferencias del usuario.
+</p>
+
+<div align="center"><img border="1" src="RolesDiagram.png"></div><br>
 
 <hr width="100%">
 <br>
@@ -131,13 +189,28 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <hr width="100%">
 <a name="Agent-Role Grouping"><div align="center"><p>
 <b><font size="+3">Agent-role Grouping Diagram</font></b></p>
-</div><div align="center"><img border="1" src="AgentRoleGroupingDiagram.png"></div><br>
+</div>
+
+<p>
+  Con este esquema identificamos cuáles van a ser los agentes de nuestro sistema, y hacemos un mapeo gráfico con los roles -deducidos anteriormente- que van a desempeñar cada uno de ellos.
+</p>
+<p>
+  Cabe destacar la decisión tomada en juntar finalmente los roles de obtención de alojamiento y actividades en un mismo agente, ya que pensamos aprovechar ciertas cualidades de connivencia entre el lugar donde se hospeda el turista y las actividades que pueden resultarle de interés (p.e: proximidad, movilidad…).
+</p>
+
+<div align="center"><img border="1" src="AgentRoleGroupingDiagram.png"></div><br>
 
 <hr width="100%">
 <br>
 <a name="System Overview"><div align="center"><p>
 <b><font size="+3">System Overview Diagram</font></b></p>
-</div><div align="center"><img border="1" src="SystemOverviewDiagram.png"></div><br>
+</div>
+
+<p>
+  Explicacion
+</p>
+
+<div align="center"><img border="1" src="SystemOverviewDiagram.png"></div><br>
 
 <!-- *************************************************************************************************** -->
 <!--
@@ -150,6 +223,13 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <a name="Protocol"><div align="center"><p>
 <b><font size="+3">Protocols</font></b></p>
 </div><br>
+
+<p>
+  Entre el Agente Administrativo y el Agente Pagador habrá una comunicación bidireccional, en el que el primero le hará una petición de pago y el segundo le transmitirá el informe resultante.
+</p>
+<p>
+  Entre los otros dos, habrá también un protocolo de comunicación bidireccional en el que el Agente Planificador les pedirá y recibirá datos de los Agentes de Alojamiento y Actividad así como el de Transporte.
+</p>
 
 <hr width="100%">
 <br>
@@ -175,66 +255,6 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <b><font size="+2">Protocol Pr. Plan creado</font></b></p>
 <img border="1" src="ProtocolDiagram_Pr. Plan creado_249.png"></div><br>
 
-<!--
-<hr width="100%">
-<br>
-
-<hr width="100%">
---->
-
-<!-- *************************************************************************************************** -->
-<!--
- Agentes
- =======
-
-<hr width="100%">
-<div align="left"><p>
-<b><font size="+3">Agents Detailed Design</font></b></p>
-</div>
-<hr width="100%">
-
-<hr width="100%">
-<a name="Ag. Planificador_87"><div align="center"><p>
-<b><font size="+3">Agent Ag. Planificador</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Planificador_87.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Administrativo_122"><div align="center"><p>
-<b><font size="+3">Agent Ag. Administrativo</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Administrativo_122.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Pagador_123"><div align="center"><p>
-<b><font size="+3">Agent Ag. Pagador</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Pagador_123.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Autentificador_148"><div align="center"><p>
-<b><font size="+3">Agent Ag. Autentificador</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Autentificador_148.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Gestor de Transporte_159"><div align="center"><p>
-<b><font size="+3">Agent Ag. Gestor de Transporte</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Gestor de Transporte_159.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Gestor Alojamiento y Actividades_160"><div align="center"><p>
-<b><font size="+3">Agent Ag. Gestor Alojamiento y Actividades</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Gestor Alojamiento y Actividades_160.png"></div><br>
-
-<hr width="100%">
-<br>
-<a name="Ag. Actualizador_221"><div align="center"><p>
-<b><font size="+3">Agent Ag. Actualizador</font></b></p>
-<img border="1" src="AgentOverviewDiagram_Ag. Actualizador_221.png"></div><br>
-
--->
 
 <!-- *************************************************************************************************** -->
 <!--
@@ -248,6 +268,10 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <a name="Percept"><div align="center"><p>
 <b><font size="+3">Percepts</font></b></p>
 </div><br>
+
+<p>
+  Explicacion
+</p>
 
 <hr width="100%">
 <br>
@@ -315,6 +339,10 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <a name="Action"><div align="center"><p>
 <b><font size="+3">Actions</font></b></p>
 </div><br>
+
+<p>
+  Explicacion
+</p>
 
 <hr width="100%">
 <br>
@@ -397,91 +425,6 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 
 <!-- *************************************************************************************************** -->
 <!--
- Mensajes
- =======
--->
-<!--
-<hr width="100%">
-<br>
-<a name="Message"><div align="center"><p>
-<b><font size="+3">Messages</font></b></p>
-</div><br>
-
-<hr width="100%">
-<br>
-<a name="peticion info_138"><div align="center"><p>
-<b><font size="+2">Message peticion info</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">peticion info</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Informe de Pago_144"><div align="center"><p>
-<b><font size="+2">Message Informe de Pago</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Informe de Pago</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Informe de Pago_144">Ag. Pagador --&gt; Ag. Administrativo</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Informe de Pago2_174"><div align="center"><p>
-<b><font size="+2">Message Informe de Pago2</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Informe de Pago2</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Informe de Pago2_174">Ag. Administrativo --&gt; Ag. Pagador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Alojamiento y Actividades_181"><div align="center"><p>
-<b><font size="+2">Message Alojamiento y Actividades</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Alojamiento y Actividades</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Transporte_185"><div align="center"><p>
-<b><font size="+2">Message Transporte</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Transporte</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Pedir datos alojamiento_188"><div align="center"><p>
-<b><font size="+2">Message Pedir datos alojamiento</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Pedir datos alojamiento</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos alojamiento_188">Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Resultado datos obtenidos alojamiento_192"><div align="center"><p>
-<b><font size="+2">Message Resultado datos obtenidos alojamiento</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Resultado datos obtenidos alojamiento</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos alojamiento_192">Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Pedir datos actividades_196"><div align="center"><p>
-<b><font size="+2">Message Pedir datos actividades</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Pedir datos actividades</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos actividades_196">Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Resultado datos obtenidos actividades_200"><div align="center"><p>
-<b><font size="+2">Message Resultado datos obtenidos actividades</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Resultado datos obtenidos actividades</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos actividades_200">Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Pedir datos transporte_207"><div align="center"><p>
-<b><font size="+2">Message Pedir datos transporte</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Pedir datos transporte</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos transporte_207">Ag. Planificador --&gt; Ag. Gestor de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Resultado datos obtenidos transporte_211"><div align="center"><p>
-<b><font size="+2">Message Resultado datos obtenidos transporte</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Resultado datos obtenidos transporte</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos transporte_211">Ag. Gestor de Transporte --&gt; Ag. Planificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
-
-<hr width="100%">
-<br>
-<a name="Informa del plan creado_251"><div align="center"><p>
-<b><font size="+2">Message Informa del plan creado</font></b></p>
-</div><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Informa del plan creado</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Description</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>posted when condition</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Distribution</b></td><td bgcolor="#ffffff" valign="top"><a href="#Informa del plan creado_251">Ag. Planificador --&gt; Ag. Administrativo</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Purpose</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Carried information</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Hide/Unhide Notes</b></td><td bgcolor="#ffffff" valign="top">display</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External to system</b></td><td bgcolor="#ffffff" valign="top">No</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>External Path</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Plans</b></td><td bgcolor="#ffffff" valign="top">&nbsp;</td></tr></table></div><br>
--->
-
-<!-- *************************************************************************************************** -->
-<!--
  BD
  =======
 -->
@@ -492,6 +435,10 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <a name="Data"><div align="center"><p>
 <b><font size="+3">Data</font></b></p>
 </div><br>
+
+<p>
+  Explicacion
+</p>
 
 <hr width="100%">
 <br>
@@ -590,119 +537,5 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 <b><font size="+1">Listed by type:</font></b></p>
 <table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Actualizar Datos_78">Ac. Actualizar Datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Actualizar Datos_78">Ac. Actualizar Datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Actualizar Preferencias_248">Ac. Actualizar Preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Actualizar Preferencias_248">Ac. Actualizar Preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Actividades_153">Ac. Buscar Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Actividades_153">Ac. Buscar Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Alojamiento_95">Ac. Buscar Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Alojamiento_95">Ac. Buscar Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Transporte_154">Ac. Buscar Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Buscar Transporte_154">Ac. Buscar Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Crear Plan_61">Ac. Crear Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Crear Plan_61">Ac. Crear Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Identificar_157">Ac. Identificar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Identificar_157">Ac. Identificar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar pago_68">Ac. Informar pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar pago_68">Ac. Informar pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar plan_167">Ac. Informar plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar plan_167">Ac. Informar plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar preferencias_163">Ac. Informar preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Informar preferencias_163">Ac. Informar preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Pedir Valoracion_99">Ac. Pedir Valoracion</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Pedir Valoracion_99">Ac. Pedir Valoracion</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Realizar Pago_97">Ac. Realizar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Realizar Pago_97">Ac. Realizar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Registrar Usuario_156">Ac. Registrar Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Action">Action</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ac. Registrar Usuario_156">Ac. Registrar Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Admin. Pago_114">Admin. Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Buscador Actividades_91">Buscador Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Buscador Alojamiento_90">Buscador Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Buscador Transporte_89">Buscador Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Cliente Web_93">Cliente Web</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Actor">Actor</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#SIstema_88">SIstema</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Actualizador_221">Ag. Actualizador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Administrativo_122">Ag. Administrativo</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Autentificador_148">Ag. Autentificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Gestor Alojamiento y Actividades_160">Ag. Gestor Alojamiento y Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Gestor de Transporte_159">Ag. Gestor de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Pagador_123">Ag. Pagador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Agent">Agent</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Ag. Planificador_87">Ag. Planificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Actividades_119">DB Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Actividades_119">DB Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Alojamiento_118">DB Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Alojamiento_118">DB Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Planes_120">DB Planes</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Planes_120">DB Planes</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Transporte_117">DB Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Transporte_117">DB Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Usuario_121">DB Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Data">Data</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#DB Usuario_121">DB Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar datos_74">Actualizar datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar datos_74">Actualizar datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar Preferencias Usuario_106">Actualizar Preferencias Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar Preferencias Usuario_106">Actualizar Preferencias Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Autenticacion_100">Autenticacion</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Autenticacion_100">Autenticacion</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Criba de opciones_104">Criba de opciones</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Criba de opciones_104">Criba de opciones</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion de Pago_29">Gestion de Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion de Pago_29">Gestion de Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion Plan Viaje_111">Gestion Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion Plan Viaje_111">Gestion Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Guardar Precios_108">Guardar Precios</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Guardar Precios_108">Guardar Precios</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Identificar usuario_103">Identificar usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Identificar usuario_103">Identificar usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informar Pago_48">Informar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informar Pago_48">Informar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informar Plan_45">Informar Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informar Plan_45">Informar Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Actividades_19">Obtencion Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Actividades_19">Obtencion Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Alojamiento_27">Obtencion Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Alojamiento_27">Obtencion Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Datos_110">Obtencion Datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Datos_110">Obtencion Datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion de valoracion del Plan_69">Obtencion de valoracion del Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion de valoracion del Plan_69">Obtencion de valoracion del Plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Medios de Transporte_9">Obtencion Medios de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Medios de Transporte_9">Obtencion Medios de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener Datos(Pago)_46">Obtener Datos(Pago)</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener Datos(Pago)_46">Obtener Datos(Pago)</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener precios_107">Obtener precios</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener precios_107">Obtener precios</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Organizar Plan Viaje_105">Organizar Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Organizar Plan Viaje_105">Organizar Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pagar_113">Pagar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pagar_113">Pagar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Realizar Pago_47">Realizar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Realizar Pago_47">Realizar Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrar e Indenficar Usuario_102">Registrar e Indenficar Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrar e Indenficar Usuario_102">Registrar e Indenficar Usuario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Valorar Plan Viaje_109">Valorar Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Goal">Goal</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Valorar Plan Viaje_109">Valorar Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Alojamiento y Actividades_181">Alojamiento y Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informa del plan creado_251">Informa del plan creado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informa del plan creado_251">Informa del plan creado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informe de Pago_144">Informe de Pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Informe de Pago2_174">Informe de Pago2</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos actividades_196">Pedir datos actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos alojamiento_188">Pedir datos alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pedir datos transporte_207">Pedir datos transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#peticion info_138">peticion info</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos actividades_200">Resultado datos obtenidos actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos alojamiento_192">Resultado datos obtenidos alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Resultado datos obtenidos transporte_211">Resultado datos obtenidos transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Message">Message</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Transporte_185">Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Actividades_60">Datos de Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Actividades_60">Datos de Actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Alojamiento_59">Datos de Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Alojamiento_59">Datos de Alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Transporte_58">Datos de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Datos de Transporte_58">Datos de Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Log in_158">Log in</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Log in_158">Log in</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Peticion de plan_50">Peticion de plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Peticion de plan_50">Peticion de plan</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Plan aceptado_67">Plan aceptado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Plan aceptado_67">Plan aceptado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Plan pagado_98">Plan pagado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Plan pagado_98">Plan pagado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrar_155">Registrar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrar_155">Registrar</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Valoracion realizada_77">Valoracion realizada</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Percept">Percept</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Valoracion realizada_77">Valoracion realizada</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Datos Aloj. y Act._186">Pr. Datos Aloj. y Act.</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Datos Aloj. y Act._186">Pr. Datos Aloj. y Act.</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Datos Transporte_204">Pr. Datos Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Datos Transporte_204">Pr. Datos Transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. de pago_142">Pr. de pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. de pago_142">Pr. de pago</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Plan creado_249">Pr. Plan creado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Protocol">Protocol</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pr. Plan creado_249">Pr. Plan creado</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizador datos_220">Actualizador datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizador datos_220">Actualizador datos</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizador preferencias_247">Actualizador preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizador preferencias_247">Actualizador preferencias</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Comunicador_162">Comunicador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Comunicador_162">Comunicador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestionador Plan Viaje_57">Gestionador Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestionador Plan Viaje_57">Gestionador Plan Viaje</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Identificador_149">Identificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Identificador_149">Identificador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener actividades_151">Obtener actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener actividades_151">Obtener actividades</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener alojamiento_161">Obtener alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener alojamiento_161">Obtener alojamiento</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener datos transporte_150">Obtener datos transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtener datos transporte_150">Obtener datos transporte</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pagador_66">Pagador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Pagador_66">Pagador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrador_116">Registrador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Role">Role</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Registrador_116">Registrador</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar datos scenario_75">Actualizar datos scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Actualizar datos scenario_75">Actualizar datos scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Autenticacion scenario_101">Autenticacion scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Autenticacion scenario_101">Autenticacion scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion de Pago scenario_30">Gestion de Pago scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion de Pago scenario_30">Gestion de Pago scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion Plan de Viaje scenario_32">Gestion Plan de Viaje scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Gestion Plan de Viaje scenario_32">Gestion Plan de Viaje scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Actividades scenario_20">Obtencion Actividades scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Actividades scenario_20">Obtencion Actividades scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Alojamiento scenario_28">Obtencion Alojamiento scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Alojamiento scenario_28">Obtencion Alojamiento scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion de valoracion del Plan scenario_70">Obtencion de valoracion del Plan scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion de valoracion del Plan scenario_70">Obtencion de valoracion del Plan scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Medios de Transporte scenario_10">Obtencion Medios de Transporte scenario</a></td></tr><tr><td bgcolor="#ebebff" valign="top"><b><a href="#Scenario">Scenario</a></b></td><td bgcolor="#ffffff" valign="top"><a href="#Obtencion Medios de Transporte scenario_10">Obtencion Medios de Transporte scenario</a></td></tr></table><a name="Crosscheck"><div align="center"><p>
 
-  <!-- *************************************************************************************************** -->
-  <!--
-   Warnings y errores
-   ==================
-
-<b><font size="+3">Crosscheck</font></b></p>
-</div><p>
-<b><font size="+1">Warnings:</font></b></p>
-<ol compact>
-<li>The agent &quot;Ag. Autentificador&quot; does not interact with other agents</li>
-<li>The agent &quot;Ag. Actualizador&quot; does not interact with other agents</li>
-<li>The data &quot;DB Planes&quot; is never read</li>
-<li>The goal &quot;Gestion de Pago&quot; is not used within an agent.</li>
-<li>The goal &quot;Obtener Datos(Pago)&quot; is not used within an agent.</li>
-<li>The goal &quot;Autenticacion&quot; is not used within an agent.</li>
-<li>The goal &quot;Criba de opciones&quot; is not used within an agent.</li>
-<li>The goal &quot;Obtener precios&quot; is not used within an agent.</li>
-<li>The goal &quot;Guardar Precios&quot; is not used within an agent.</li>
-<li>The goal &quot;Valorar Plan Viaje&quot; is not used within an agent.</li>
-<li>The goal &quot;Obtencion Datos&quot; is not used within an agent.</li>
-<li>The goal &quot;Gestion Plan Viaje&quot; is not used within an agent.</li>
-<li>The goal &quot;Pagar&quot; is not used within an agent.</li>
-<li>The message &quot;peticion info&quot; is never received.</li>
-<li>The message &quot;peticion info&quot; is never sent.</li>
-<li>The message &quot;Alojamiento y Actividades&quot; is never received.</li>
-<li>The message &quot;Alojamiento y Actividades&quot; is never sent.</li>
-<li>The message &quot;Transporte&quot; is never received.</li>
-<li>The message &quot;Transporte&quot; is never sent.</li>
-</ol>
-<p>
-<b><font size="+1">Errors:</font></b></p>
-<ol compact>
-<li>The message &quot;Pedir datos alojamiento: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos alojamiento: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Pedir datos actividades: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos actividades: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Pedir datos transporte: Ag. Planificador --&gt; Ag. Gestor de Transporte&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos transporte: Ag. Gestor de Transporte --&gt; Ag. Planificador&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Informa del plan creado: Ag. Planificador --&gt; Ag. Administrativo&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Pedir datos alojamiento: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos alojamiento: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Pedir datos actividades: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos actividades: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Pedir datos transporte: Ag. Planificador --&gt; Ag. Gestor de Transporte&quot; in protocol &quot;Pr. Datos Transporte&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos transporte: Ag. Gestor de Transporte --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Transporte&quot; is not received by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Informa del plan creado: Ag. Planificador --&gt; Ag. Administrativo&quot; in protocol &quot;Pr. Plan creado&quot; is not sent by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The data &quot;DB Planes&quot; is not written by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The action &quot;Ac. Crear Plan&quot; is not performed by any plan or capability within agent &quot;Ag. Planificador&quot;.</li>
-<li>The message &quot;Informe de Pago: Ag. Pagador --&gt; Ag. Administrativo&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informe de Pago2: Ag. Administrativo --&gt; Ag. Pagador&quot; is not sent by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informa del plan creado: Ag. Planificador --&gt; Ag. Administrativo&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informe de Pago: Ag. Pagador --&gt; Ag. Administrativo&quot; in protocol &quot;Pr. de pago&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informe de Pago2: Ag. Administrativo --&gt; Ag. Pagador&quot; in protocol &quot;Pr. de pago&quot; is not sent by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informa del plan creado: Ag. Planificador --&gt; Ag. Administrativo&quot; in protocol &quot;Pr. Plan creado&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The action &quot;Ac. Informar pago&quot; is not performed by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The action &quot;Ac. Informar preferencias&quot; is not performed by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The action &quot;Ac. Informar plan&quot; is not performed by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The action &quot;Ac. Pedir Valoracion&quot; is not performed by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The action &quot;Ac. Actualizar Preferencias&quot; is not performed by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The percept &quot;Plan aceptado&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The percept &quot;Peticion de plan&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The percept &quot;Plan pagado&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The percept &quot;Valoracion realizada&quot; is not received by any plan or capability within agent &quot;Ag. Administrativo&quot;.</li>
-<li>The message &quot;Informe de Pago: Ag. Pagador --&gt; Ag. Administrativo&quot; is not sent by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The message &quot;Informe de Pago2: Ag. Administrativo --&gt; Ag. Pagador&quot; is not received by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The message &quot;Informe de Pago: Ag. Pagador --&gt; Ag. Administrativo&quot; in protocol &quot;Pr. de pago&quot; is not sent by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The message &quot;Informe de Pago2: Ag. Administrativo --&gt; Ag. Pagador&quot; in protocol &quot;Pr. de pago&quot; is not received by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The data &quot;DB Planes&quot; is not written by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The action &quot;Ac. Realizar Pago&quot; is not performed by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The percept &quot;Plan aceptado&quot; is not received by any plan or capability within agent &quot;Ag. Pagador&quot;.</li>
-<li>The data &quot;DB Usuario&quot; is not written by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The data &quot;DB Usuario&quot; is not read by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The action &quot;Ac. Registrar Usuario&quot; is not performed by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The action &quot;Ac. Identificar&quot; is not performed by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The percept &quot;Registrar&quot; is not received by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The percept &quot;Log in&quot; is not received by any plan or capability within agent &quot;Ag. Autentificador&quot;.</li>
-<li>The message &quot;Pedir datos transporte: Ag. Planificador --&gt; Ag. Gestor de Transporte&quot; is not received by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos transporte: Ag. Gestor de Transporte --&gt; Ag. Planificador&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The message &quot;Pedir datos transporte: Ag. Planificador --&gt; Ag. Gestor de Transporte&quot; in protocol &quot;Pr. Datos Transporte&quot; is not received by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos transporte: Ag. Gestor de Transporte --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Transporte&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The data &quot;DB Transporte&quot; is not written by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The data &quot;DB Transporte&quot; is not read by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The action &quot;Ac. Buscar Transporte&quot; is not performed by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The percept &quot;Datos de Transporte&quot; is not received by any plan or capability within agent &quot;Ag. Gestor de Transporte&quot;.</li>
-<li>The message &quot;Pedir datos alojamiento: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos alojamiento: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Pedir datos actividades: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos actividades: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Pedir datos alojamiento: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos alojamiento: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Pedir datos actividades: Ag. Planificador --&gt; Ag. Gestor Alojamiento y Actividades&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The message &quot;Resultado datos obtenidos actividades: Ag. Gestor Alojamiento y Actividades --&gt; Ag. Planificador&quot; in protocol &quot;Pr. Datos Aloj. y Act.&quot; is not sent by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The data &quot;DB Alojamiento&quot; is not written by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The data &quot;DB Alojamiento&quot; is not read by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The data &quot;DB Actividades&quot; is not written by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The data &quot;DB Actividades&quot; is not read by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The action &quot;Ac. Buscar Alojamiento&quot; is not performed by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The action &quot;Ac. Buscar Actividades&quot; is not performed by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The percept &quot;Datos de Alojamiento&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The percept &quot;Datos de Actividades&quot; is not received by any plan or capability within agent &quot;Ag. Gestor Alojamiento y Actividades&quot;.</li>
-<li>The data &quot;DB Transporte&quot; is not written by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The data &quot;DB Transporte&quot; is not read by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The data &quot;DB Alojamiento&quot; is not written by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The data &quot;DB Alojamiento&quot; is not read by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The data &quot;DB Actividades&quot; is not written by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The data &quot;DB Actividades&quot; is not read by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-<li>The action &quot;Ac. Actualizar Datos&quot; is not performed by any plan or capability within agent &quot;Ag. Actualizador&quot;.</li>
-</ol>
-<br>
-
-<hr width="100%">
-<br>
-
--->
 </body>
 </html>
