@@ -1,2 +1,2 @@
 # ecsdi-practica
-Practica de la asignatura ECSDI de la FIB
+Práctica de la asignatura ECSDI de la FIB

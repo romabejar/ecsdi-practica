@@ -1,18 +1,18 @@
 <html>
-<body>
+<body style="background-color:#DBEBFF;">
 <div align="center"><p>
 <b><font size="+3">Organizador del Plan de Viaje</font></b></p>
-</div><a name="Project Data"><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Organizador del Plan de Viaje</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Author</b></td><td bgcolor="#ffffff" valign="top">Roma Bejar, Cristian Jara, German Mora, Sergi Muñoz.</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Version</b></td><td bgcolor="#ffffff" valign="top">1.0</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Prometheus version</b></td><td bgcolor="#ffffff" valign="top">3.3b_internal</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Report generation date</b></td><td bgcolor="#ffffff" valign="top">2017-03-31</td></tr></table></div><br>
+</div><a name="Project Data"><div align="center"><table bgcolor="#000000" border="0" cellspacing="2" cellpadding="2"><tr><td bgcolor="#ebebff" valign="top"><b>Name</b></td><td bgcolor="#ffffff" valign="top">Organizador del Plan de Viaje</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Author</b></td><td bgcolor="#ffffff" valign="top">Roma Bejar, Cristian Jara, German Mora, Sergi M.</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Version</b></td><td bgcolor="#ffffff" valign="top">1.0</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Prometheus version</b></td><td bgcolor="#ffffff" valign="top">3.3b_internal</td></tr><tr><td bgcolor="#ebebff" valign="top"><b>Report generation date</b></td><td bgcolor="#ffffff" valign="top">2017-03-31</td></tr></table></div><br>
 
 <hr width="100%">
 <br>
 <div align="center"><p>
 <b><font size="+3">Brief Description of System</font></b></p>
 </div><p>
-Es un conjunto de agentes/servicios capaces de planificar una visita turístico-cultural a una ciudad en sentido amplio.
-Esta planificación se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
-El sistema consta de servicios que filtran/obtienen/seleccionan toda la información necesaria, los servicios que generan esa planificación y todos aquellos servicios
-que son adicionales, que permiten gestionar todos los elementos que forman parte de una solución.
+Es un conjunto de agentes/servicios capaces de planificar una visita turistico-cultural a una ciudad en sentido amplio.
+Esta planificacion se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
+El sistema consta de servicios que filtran/obtienen/seleccionan toda la informacion necesaria, los servicios que generan esa planificacion y todos aquellos servicios
+que son adicionales, que permiten gestionar todos los elementos que forman parte de una solucion.
 Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo</p>
 <br>
 
@@ -33,19 +33,20 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 </div>
 
 <p>
-  Para la realización de este diagrama hemos hecho un análisis global del sistema, empezando de forma cronológica con la primera interacción del Usuario (mediante el cliente web).
+  Para la realizacion de este diagrama hemos hecho un analisis global del sistema, empezando de forma cronologica con la primera interaccion del Usuario (mediante el cliente web).
 </p>
 <p>
-  Así pues, tenemos que el sistema se va a lanzar cuando reciba una percepción del cliente web pidiéndole un plan de viaje. Entonces, el sistema dará comienzo a la búsqueda de los datos necesarios (transporte, alojamientos y actividades) según las exigencias recibidas por el usuario a través de sus respectivos Actores.
+  Asi pues, tenemos que el sistema se va a lanzar cuando reciba una percepcion del cliente web pidiendole un plan de viaje. Entonces, el sistema dara comienzo a la busqueda de los datos necesarios (transporte, alojamientos y actividades)
+  segun las exigencias recibidas por el usuario a traves de sus respectivos Actores.
 </p>
 <p>
   Una vez recabados los datos, el sistema recibe las percepciones Datos de Actividades, Datos de Alojamiento y Datos de Transporte, y monta el plan de viaje e informa del plan al usuario, para que sopese si le interesa o no.
 </p>
 <p>
-  Si el plan es aceptado, se procede a realizar el pago mediante el actor Admin. de Pago. Éste, genera una percepción que recoge el sistema y acciona la comunicación con el usuario, informándole de que el pago se ha realizado.
+  Si el plan es aceptado, se procede a realizar el pago mediante el actor Admin. de Pago. Este, genera una percepcion que recoge el sistema y acciona la comunicacion con el usuario, informandole de que el pago se ha realizado.
 </p>
 <p>
-  Una vez el usuario ha terminado el viaje, dado que el sistema tiene almacenadas las fechas del plan, se le pide una valoración al usuario para ser tratada de forma proactiva.
+  Una vez el usuario ha terminado el viaje, dado que el sistema tiene almacenadas las fechas del plan, se le pide una valoracion al usuario para ser tratada de forma proactiva.
 </p>
 
 <div align="center"><img border="1" src="AnalysisOverviewDiagram.png"></div><br>
@@ -57,7 +58,7 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 </div>
 
 <p>
-  En esta visualización dejamos explícito el mapa de objetivos que hemos extraído de las funcionalidades que llevará a cabo nuestro sistema.
+  En esta visualizacion dejamos explicito el mapa de objetivos que hemos extraido de las funcionalidades que llevara a cabo nuestro sistema.
 </p>
 <p>
   <!-- He puesto 4 bloques, porque habias escrito 5, pero solo habian 4-->
@@ -65,17 +66,17 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 </p>
 <ol>
   <li>
-    Bloque Gestión del Plan de Viaje: deberá cumplir con la obtención de datos; tanto sobre los medios de transporte, como los alojamientos o las actividades.
-    Luego, esos datos requerirán ser filtrados en una Criba de opciones para Organizar el Plan, y finalmente, se informará de dicho plan para que el usuario pueda tomar una decisión.
+    Bloque Gestion del Plan de Viaje: debera cumplir con la obtencion de datos; tanto sobre los medios de transporte, como los alojamientos o las actividades.
+    Luego, esos datos requeriran ser filtrados en una Criba de opciones para Organizar el Plan, y finalmente, se informara de dicho plan para que el usuario pueda tomar una decision.
   </li>
   <li>
-    Bloque Gestión de Pago, en el que para cumplirlo, primero es necesario realizar el pago -es decir, obtener los datos de pago y mandar propiamente a pagar- e informar del pago.
+    Bloque Gestion de Pago, en el que para cumplirlo, primero es necesario realizar el pago -es decir, obtener los datos de pago y mandar propiamente a pagar- e informar del pago.
   </li>
   <li>
-    Bloque Actualizar datos. Para este objetivo, iremos obteniendo y escribiendo de forma periódica los datos externos en nuestra base de datos.
+    Bloque Actualizar datos. Para este objetivo, iremos obteniendo y escribiendo de forma periodica los datos externos en nuestra base de datos.
   </li>
   <li>
-    En el bloque de Autenticación, se cumplirá con el objetivo de registrar y con el de identificar o LogIn.
+    En el bloque de Autenticacion, se cumplira con el objetivo de registrar y con el de identificar o LogIn.
   </li>
 </ol>
 
@@ -97,8 +98,15 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 </div><br>
 
 <p>
-  A continuación se describen los escenarios de nuestro sistema.
+  En la siguiente imagen tenemos la distribucion de los escenarios generados para la practica.
 </p>
+
+<div align="center"><img border="1" src="Scenarios.PNG"></div><br>
+
+<p>
+  A continuacion se describen los escenarios de nuestro sistema.
+</p>
+
 
 <hr width="100%">
 <br>
@@ -164,7 +172,9 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
   En el siguiente diagrama vemos representados los roles del sistema, con sus percepciones y acciones que nos ayudan a cumplir todos los objetivos -de sus respectivos escenarios- descritos hasta el momento.
 </p>
 <p>
-De todos estos, por ser quizás el más complejo, parece merecer la pena hacer mención al rol Comunicador. Dicho rol, es el encargado de mantener siempre una vía de interacción y comunicación con el usuario en el transcurso de todo el proceso. Eso es: desde el momento en el que recibe su primera percepción de petición de plan, donde se informará del plan y, si acepta, del pago; hasta el momento de obtener la valoración del usuario sobre el viaje, una vez éste haya pasado. También recogerá información de las preferencias del usuario.
+  De todos estos, por ser quizas el mas complejo, parece merecer la pena hacer mencion al rol Comunicador. Dicho rol, es el encargado de mantener siempre una via de interaccion y comunicacion con el usuario en el transcurso de todo el proceso.
+  Eso es: desde el momento en el que recibe su primera percepcion de peticion de plan, donde se informara del plan y, si acepta, del pago;
+  hasta el momento de obtener la valoracion del usuario sobre el viaje, una vez este haya pasado. Tambien recogera informacion de las preferencias del usuario.
 </p>
 
 <div align="center"><img border="1" src="RolesDiagram.png"></div><br>
@@ -192,10 +202,11 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div>
 
 <p>
-  Con este esquema identificamos cuáles van a ser los agentes de nuestro sistema, y hacemos un mapeo gráfico con los roles -deducidos anteriormente- que van a desempeñar cada uno de ellos.
+  Con este esquema identificamos cuales van a ser los agentes de nuestro sistema, y hacemos un mapeo grafico con los roles -deducidos anteriormente- que van a ejercer cada uno de ellos.
 </p>
 <p>
-  Cabe destacar la decisión tomada en juntar finalmente los roles de obtención de alojamiento y actividades en un mismo agente, ya que pensamos aprovechar ciertas cualidades de connivencia entre el lugar donde se hospeda el turista y las actividades que pueden resultarle de interés (p.e: proximidad, movilidad…).
+  Cabe destacar la decision tomada en juntar finalmente los roles de obtencion de alojamiento y actividades en un mismo agente, ya que pensamos aprovechar ciertas cualidades de connivencia entre el lugar donde se hospeda el
+  turista y las actividades que pueden resultarle de interes (p.e: proximidad, movilidad, etc.).
 </p>
 
 <div align="center"><img border="1" src="AgentRoleGroupingDiagram.png"></div><br>
@@ -207,7 +218,22 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div>
 
 <p>
-  Explicacion
+  En este apartado hemos hecho el diagrama en que ya asociamos todas las percepciones y acciones con sus respectivos agentes, identificando tambien que bases de datos van a acceder cada uno de ellos y, si van a necesitar comunicarse,
+  especificamos el protocolo de comunicacion que van a usar.
+</p>
+<p>
+  Los protocolos se mencionan en el siguiente apartado, y hemos definido y especificado hasta ahora todas las percepciones y acciones del sistema; asi que
+  nos vamos a centrar en la comparticion de fuentes de datos.
+</p>
+<p>
+  Para la fuente de datos de planes, el agente pagador actualizara los planes para indicar que ya ha sido satisfactoriamente pagado, mientras que el planificador escribira todos esos planes que han sido aceptados por el usuario.
+</p>
+<p>
+  Otra fuente compartida es la de datos de transporte, entre el gestor de transporte y el actualizador de datos.
+  Ambos escribiran y leeran de esa base de datos; el primero para recuperar los datos, que deben ser comunicados al agente planificador, y el segundo, debera actualizar los datos en funcion de las busquedas mas frecuentes.
+</p>
+<p>
+  De forma totalmente independiente tendremos el agente autentificador con una base de datos de usuarios para el, desde donde registra y lee las credenciales de los usuarios.
 </p>
 
 <div align="center"><img border="1" src="SystemOverviewDiagram.png"></div><br>
@@ -225,11 +251,30 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div><br>
 
 <p>
-  Entre el Agente Administrativo y el Agente Pagador habrá una comunicación bidireccional, en el que el primero le hará una petición de pago y el segundo le transmitirá el informe resultante.
+  Entre el Agente Administrativo y el Agente Pagador habra una comunicacion bidireccional, en el que el primero le hara una peticion de pago y el segundo le transmitira el informe resultante.
 </p>
 <p>
-  Entre los otros dos, habrá también un protocolo de comunicación bidireccional en el que el Agente Planificador les pedirá y recibirá datos de los Agentes de Alojamiento y Actividad así como el de Transporte.
+  Entre los otros dos, habra tambien un protocolo de comunicacion bidireccional en el que el Agente Planificador les pedira y recibira datos de los Agentes de Alojamiento y Actividad asi como el de Transporte.
 </p>
+<p>
+  El mensaje, evidentemente, sera un conjunto de transportes, alojamientos o actividades que cumplen con las exigencias expuestas que le han llegado al agente planificador.
+</p>
+
+<p>
+  Los protocolos que intervienen en el sistema son:
+</p>
+<li>
+  Protocol Pr. de pago
+</li>
+<li>
+  Protocol Pr. Datos Aloj. y Act.
+</li>
+<li>
+  Protocol Pr. Datos Transporte
+</li>
+<li>
+  Protocol Pr. Plan creado
+</li>
 
 <hr width="100%">
 <br>
@@ -270,8 +315,36 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div><br>
 
 <p>
-  Explicacion
+  A continuacion adjuntamos la informacion de todas las percepciones generadas en el sistema, con su respectiva explicacion:
 </p>
+<li>
+  Peticion de plan
+</li>
+<li>
+  Datos de Transporte
+</li>
+<li>
+  Datos de Alojamiento
+</li>
+<li>
+  Datos de Actividades
+</li>
+<li>
+  Plan aceptado
+</li>
+<li>
+  Valoracion realizada
+</li>
+<li>
+  Plan pagado
+</li>
+<li>
+  Registrar
+</li>
+<li>
+  Log in
+</li>
+
 
 <hr width="100%">
 <br>
@@ -341,8 +414,48 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div><br>
 
 <p>
-  Explicacion
+  A continuacion adjuntamos la informacion de todas las acciones generadas en el sistema, con su respectiva explicacion:
 </p>
+<li>
+  Ac. Crear Plan
+</li>
+<li>
+  Ac. Informar pago
+</li>
+<li>
+  Ac. Actualizar Datos
+</li>
+<li>
+  Ac. Buscar Alojamiento
+</li>
+<li>
+  Ac. Realizar Pago
+</li>
+<li>
+  Ac. Pedir Valoracion
+</li>
+<li>
+  Ac. Buscar Actividades
+</li>
+<li>
+  Ac. Buscar Transporte
+</li>
+<li>
+  Ac. Registrar Usuario
+</li>
+<li>
+  Ac. Identificar
+</li>
+<li>
+  Ac. Informar preferencias
+</li>
+<li>
+  Ac. Informar plan
+</li>
+<li>
+  Ac. Actualizar Preferencias
+</li>
+
 
 <hr width="100%">
 <br>
@@ -437,8 +550,24 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 </div><br>
 
 <p>
-  Explicacion
+  A continuacion adjuntamos la informacion de todas las bases de datos empleadas el sistema, con su respectiva explicacion:
 </p>
+<li>
+  DB Transporte
+</li>
+<li>
+  DB Alojamiento
+</li>
+<li>
+  DB Actividades
+</li>
+<li>
+  DB Planes
+</li>
+<li>
+  DB Usuario
+</li>
+
 
 <hr width="100%">
 <br>
@@ -482,6 +611,28 @@ De todos estos, por ser quizás el más complejo, parece merecer la pena hacer m
 <a name="Actor"><div align="center"><p>
 <b><font size="+3">Actors</font></b></p>
 </div><br>
+
+<p>
+  Los actores que intevienen en el sistema son los siguiente:
+</p>
+<li>
+  Sistema
+</li>
+<li>
+  Buscador de transporte
+</li>
+<li>
+  Buscador de alojamiento
+</li>
+<li>
+  Buscador de actividades
+</li>
+<li>
+  Cliente Web
+</li>
+<li>
+  Actor Admin. Pago
+</li>
 
 <hr width="100%">
 <br>
