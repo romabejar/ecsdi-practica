@@ -1,0 +1,38 @@
+# Ontology #
+
+- thing
+  - transport
+    - at. origin: place
+    - at. destination: place
+    - flight
+    - train
+    - bus
+    - taxi
+    - subway
+  - place
+    - city
+      - at. name: Srting
+    - country
+      - at. name: String
+  - company
+    - at. name: String
+  - activity
+    - at. activity_type: enum{ludic,festive,cultural}
+  - accommodation
+    - hotel
+      - at. name: String
+    - hostel
+      - at. name: String
+  - travel_plan
+    - at. id: Integer
+    - at. date: DateTime
+    - rel. belongs_to: user
+
+    - contract
+  - user
+    - at. name: String
+    - at. mail: String
+  - valoration
+    - at. value: Integer
+    - rel. of: company
+    - rel. from: user
