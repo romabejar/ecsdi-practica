@@ -10,205 +10,259 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.semanticweb.org/german/ontologies/2017/4/ECSDIOnto_Plan_Viaje"
+     xml:base="http://www.semanticweb.org/german/ontologies/2017/4/ECSDIOnto_Travel_plan"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://www.semanticweb.org/german/ontologies/2017/4/ECSDIOnto_Plan_Viaje">
+     ontologyIRI="http://www.semanticweb.org/german/ontologies/2017/4/ECSDIOnto_Travel_plan">
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
-        <Class IRI="#Actividad"/>
+        <Class IRI="#accommodation"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Albergue"/>
+        <Class IRI="#activity"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Alojamiento"/>
+        <Class IRI="#bus"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Autobus"/>
+        <Class IRI="#city"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Avion"/>
+        <Class IRI="#company"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Contrato"/>
+        <Class IRI="#contract"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Cultural"/>
+        <Class IRI="#country"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Festiva"/>
+        <Class IRI="#cultural"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Hostal"/>
+        <Class IRI="#festive"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Hotel"/>
+        <Class IRI="#flight"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Ludica"/>
+        <Class IRI="#hostel"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Metro"/>
+        <Class IRI="#hotel"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#PlanViaje"/>
+        <Class IRI="#ludic"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Taxi"/>
+        <Class IRI="#place"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Transporte"/>
+        <Class IRI="#subway"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Tren"/>
+        <Class IRI="#taxi"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#train"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#transport"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#travel_plan"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#user"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#valoration"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#checkin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#checkout"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#cost"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#date"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#destination"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#email"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hour_end"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hour_start"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#idetification"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#name"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#number_bus"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#origin"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#value"/>
     </Declaration>
     <SubClassOf>
-        <Class IRI="#Actividad"/>
-        <Class IRI="#PlanViaje"/>
+        <Class IRI="#bus"/>
+        <Class IRI="#transport"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Albergue"/>
-        <Class IRI="#Alojamiento"/>
+        <Class IRI="#city"/>
+        <Class IRI="#place"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Alojamiento"/>
-        <Class IRI="#PlanViaje"/>
+        <Class IRI="#contract"/>
+        <Class IRI="#travel_plan"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Autobus"/>
-        <Class IRI="#Transporte"/>
+        <Class IRI="#country"/>
+        <Class IRI="#place"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Avion"/>
-        <Class IRI="#Transporte"/>
+        <Class IRI="#cultural"/>
+        <Class IRI="#activity"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Contrato"/>
-        <Class IRI="#PlanViaje"/>
+        <Class IRI="#festive"/>
+        <Class IRI="#activity"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Cultural"/>
-        <Class IRI="#Actividad"/>
+        <Class IRI="#flight"/>
+        <Class IRI="#transport"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Festiva"/>
-        <Class IRI="#Actividad"/>
+        <Class IRI="#hostel"/>
+        <Class IRI="#accommodation"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Hostal"/>
-        <Class IRI="#Alojamiento"/>
+        <Class IRI="#hotel"/>
+        <Class IRI="#accommodation"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Hotel"/>
-        <Class IRI="#Alojamiento"/>
+        <Class IRI="#ludic"/>
+        <Class IRI="#activity"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Ludica"/>
-        <Class IRI="#Actividad"/>
+        <Class IRI="#subway"/>
+        <Class IRI="#transport"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Metro"/>
-        <Class IRI="#Transporte"/>
+        <Class IRI="#taxi"/>
+        <Class IRI="#transport"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Taxi"/>
-        <Class IRI="#Transporte"/>
+        <Class IRI="#train"/>
+        <Class IRI="#transport"/>
     </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Transporte"/>
-        <Class IRI="#PlanViaje"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Tren"/>
-        <Class IRI="#Transporte"/>
-    </SubClassOf>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Actividad</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase del Tipo de Actividades</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Albergue</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Albergue</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Alojamiento</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase de los Alojamientos</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Autobus</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Autobus</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Avion</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Avion</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Contrato</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase del Contrato generado cuando el usuario realiza el pago del plan de viaje</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Cultural</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Cultural</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Festiva</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Festiva</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Hostal</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Hostal</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Hotel</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Hotel</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Ludica</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Ludica</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Metro</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Metro</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#PlanViaje</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase del Plan de Viaje</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Taxi</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Taxi</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Transporte</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase de los medios de transporte</Literal>
-    </AnnotationAssertion>
-    <AnnotationAssertion>
-        <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
-        <IRI>#Tren</IRI>
-        <Literal datatypeIRI="&rdf;PlainLiteral">Clase Tren</Literal>
-    </AnnotationAssertion>
+    <DataPropertyDomain>
+        <DataProperty IRI="#checkin"/>
+        <Class IRI="#hostel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#checkin"/>
+        <Class IRI="#hotel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#checkout"/>
+        <Class IRI="#hostel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#checkout"/>
+        <Class IRI="#hotel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#date"/>
+        <Class IRI="#contract"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idetification"/>
+        <Class IRI="#flight"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idetification"/>
+        <Class IRI="#hostel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idetification"/>
+        <Class IRI="#hotel"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idetification"/>
+        <Class IRI="#travel_plan"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#idetification"/>
+        <Class IRI="#user"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#name"/>
+        <Class IRI="#city"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#name"/>
+        <Class IRI="#company"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#name"/>
+        <Class IRI="#country"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#name"/>
+        <Class IRI="#user"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#value"/>
+        <Class IRI="#valoration"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#checkin"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#checkout"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#date"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#destination"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#idetification"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#name"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#value"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
 </Ontology>
 
 
