@@ -3,7 +3,9 @@ API KEY GOOGLE PLACES = AIzaSyCyjudYWWbnReJa3LdTgfnQXgLxIyXvLSk
 """
 __author__ = 'bejar'
 
-from flask import Flask, request
+from flask import Flask, request, Response
+from flask.json import jsonify
+import json
 import argparse
 import requests
 from requests import ConnectionError
@@ -23,33 +25,39 @@ app = Flask(__name__)
 
 @app.route("/")
 def isAlive():
-    text = 'Hi i\'m AgExtActividades o/, if you wanna party go to <a href= /comm>here</a>'
+    text = 'Hi i\'m AgExtActividades o/, if you wanna party go to <a href= /place?location=Barcelona,%20Spain&keyword=Discoteca&type=night_club>here</a>'
     return text
 
 
-@app.route("/comm")
+@app.route("/place")
 def getPlaces():
     """
-    Entrada del servicio para saber si esta en funcionamiento
+    /place?location=loc&keyword=key&type=type
     :return:
     """
     YOUR_API_KEY = 'AIzaSyCyjudYWWbnReJa3LdTgfnQXgLxIyXvLSk'
-
     google_places = GooglePlaces(YOUR_API_KEY)
+
+    location = request.args["location"]
+    keyword = request.args["keyword"]
+    type = request.args["type"]
+
+    print location
+    print keyword
+    print type
 
     # You may prefer to use the text_search API, instead.
     query_result = google_places.nearby_search(
-        location='Barcelona, Spain', keyword='Discoteca',
-        radius=20000, types=[types.TYPE_NIGHT_CLUB])
+        location=location, keyword=keyword,
+        radius=20000, types=type)
     # placestring = "Name: %s, GeoLoc: %s, Reference: %s, Phone: %s \n"(places[0].name, places[0].geo_location, places[0].reference, places[0].local_phone_number)
     resultado = ""
+    place_json = ""
     for place in query_result.places:
         # Returned places from a query are place summaries.
         print place.name
-        print place.geo_location
-        print place.reference
-        resultado += str(place.name) + str("\r\n\r\n")
-
+        # print place.geo_location
+        # print place.reference
 
         # The following method has to make a further API call.
         # place.get_details()
@@ -61,7 +69,8 @@ def getPlaces():
         # print place.website
         # print place.url
 
-    return resultado
+    # HAY QUE INTENTAR DEVOLVER UN JSON CON LA INFO
+    return 1
 
 if __name__ == '__main__':
 

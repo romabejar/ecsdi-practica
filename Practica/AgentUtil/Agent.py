@@ -1,12 +1,15 @@
 """
 .. module:: Agent
+
 Agent
 ******
+
 :Description: Agent
   Clase para guardar los atributos de un agente
+
 """
 
-__author__ = 'jara'
+__author__ = 'bejar'
 
 
 class Agent():
