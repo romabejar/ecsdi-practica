@@ -6,7 +6,6 @@ __author__ = 'bejar'
 from flask import Flask, request, Response
 from flask.json import jsonify
 import json
-import decimal
 import argparse
 import requests
 from requests import ConnectionError
@@ -81,7 +80,6 @@ def getPlaces():
     json_data = json.dumps(resultado)
     print json_data
     return json_data
-    #return resultado
 
 if __name__ == '__main__':
 
