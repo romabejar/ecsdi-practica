@@ -1,4 +1,4 @@
-; Fri May 05 16:12:12 CEST 2017
+; Tue May 23 19:08:35 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class65]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class66]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class67]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class68]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class69]))
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class140]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class141]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class142]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class143]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class144]))
 
 ([CLSES_TAB] of  Widget
 
@@ -18,9 +18,6 @@
 	(label "Classes")
 	(property_list [Instance_47])
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesTab"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class0] of  Map
-)
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class1] of  Widget
 
@@ -48,6 +45,31 @@
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class14] of  Property_List
 )
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class140] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class141] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class142] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class143] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class144] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class15] of  Widget
 
@@ -249,31 +271,6 @@
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class6] of  Property_List
 )
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class65] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class66] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class67] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class68] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class69] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class7] of  Widget
 
@@ -911,6 +908,9 @@
 ([KB_221055_Instance_71] of  Property_List
 )
 
+([KB_255698_Class0] of  Map
+)
+
 ([KB_301165_Instance_1013] of  Widget
 
 	(is_hidden FALSE)
@@ -1026,7 +1026,7 @@
 ([KB_444675_Instance_0] of  String
 
 	(name "SwitchableClassDefinitionType")
-	(string_value "edu.stanford.smi.protegex.owl.ui.cls.PropertiesClassDefinitionWidgetType"))
+	(string_value "edu.stanford.smi.protegex.owl.ui.cls.PropertiesClassDefinitionWidget"))
 
 ([KB_465546_Instance_567] of  Widget
 
@@ -5666,8 +5666,8 @@
 		"http://www.w3.org/2002/07/owl#InverseFunctionalProperty"
 		":ANNOTATED-INSTANCE"
 		"http://www.w3.org/2003/11/swrl#BuiltinAtom"
-		"http://www.w3.org/2002/07/owl#Ontology"
 		":OWL-ONTOLOGY-POINTER-CLASS"
+		"http://www.w3.org/2002/07/owl#Ontology"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#object"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"
 		":VALUE-TYPE"
@@ -5724,8 +5724,8 @@
 		"http://www.w3.org/2001/XMLSchema#normalizedString"
 		"http://protege.stanford.edu/plugins/owl/protege#FROM"
 		"http://www.w3.org/2001/XMLSchema#nonPositiveInteger"
-		"http://protege.stanford.edu/plugins/owl/protege#classificationStatus"
 		"http://www.w3.org/2002/07/owl#someValuesFrom"
+		"http://protege.stanford.edu/plugins/owl/protege#classificationStatus"
 		"http://protege.stanford.edu/plugins/owl/protege#inferredSuperclassOf"
 		"http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#List"
@@ -6270,19 +6270,6 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2002/07/owl#imports"))
-
-([XY_Instance_217] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(name ":OWL-ONTOLOGY-PREFIXES")
-	(property_list [XY_Instance_218])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([XY_Instance_218] of  Property_List
-)
 
 ([XY_Instance_235] of  Widget
 
