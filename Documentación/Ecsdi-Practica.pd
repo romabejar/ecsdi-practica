@@ -10,6 +10,7 @@
 Esta planificaciï¿½n se adaptara a las preferencias y restricciones que llegan por parte de un agente externo que representa a un usuario.
 El sistema consta de servicios que filtran/obtienen/seleccionan toda la informaciï¿½n necesaria, los servicios que generan esa planificaciï¿½n y todos aquellos servicios
 que son adicionales, que permiten gestionar todos los elementos que forman parte de una soluciï¿½n.
+<<<<<<< HEAD
 Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo</field>
 	    <field name="version">1.0</field>
 	    <field name="fileNameLastSavedAs">Ecsdi-Practica.pd</field>
@@ -915,6 +916,913 @@ Por otra parte, el sistema emplea servicios que favorecen el correcto funcionami
 																														<object ref="50"/>
 																														</list>
 																													    </field>
+=======
+Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo</field>
+	    <field name="version">1.0</field>
+	    <field name="fileNameLastSavedAs">Ecsdi-Practica.pd</field>
+	    <field name="filePathLastSavedIn">C:\Users\Crjs\Documents\ECSDI\Documentación</field>
+	    <field name="openedAs">C:\Users\Crjs\Documents\ECSDI\Documentación\Ecsdi-Practica.pd</field>
+	    <field name="author">Roma Bejar, Cristian Jara, German Mora, Sergi M.</field>
+	    <field name="applicationVersion">3.3b_internal</field>
+	</object>
+    </field>
+    <field name="diagramSettings"><list>
+	<object type="DiagramSettings" id="2">
+	    <field name="diagramId">
+		<object type="DiagramId" id="3">
+		    <field name="stringId">au.edu.rmit.cs.prometheus.gui.diagram.agentoverview.AgentOverviewDiagramModel(id#148)</field>
+		</object>
+	    </field>
+	    <field name="entitySettings"><list>
+		<object type="DiagramEntitySetting" id="4">
+		    <field name="entity">
+			<object type="Plan" id="5">
+			    <base type="Entity">
+				<field name="name">Plan Registrar</field>
+				<field name="description"></field>
+				<field name="uniqueId">288</field>
+			    </base>
+
+			    <field name="percepts"><list>
+				<object type="Percept" id="6">
+				    <base type="Interaction">
+					<base type="Entity">
+					    <field name="name">Registrar</field>
+					    <field name="description">Lo genera un actor externo, clientre web.</field>
+					    <field name="uniqueId">155</field>
+					</base>
+
+				    </base>
+
+				    <field name="source">Clientre web</field>
+				    <field name="informationCarried">Datos del usuario necesario.</field>
+				    <field name="knowledgeUpdated">Se ha genereado un usuario nuevo en el sistema.</field>
+				    <field name="processing"></field>
+				    <field name="frequency"></field>
+				    <field name="agentsResponding"><list>
+					<object type="Agent" id="7">
+					    <base type="Entity">
+						<field name="name">Ag. Autentificador</field>
+						<field name="description">Se encarga de registrar o indentificar al usuario en el sistema.</field>
+						<field name="uniqueId">148</field>
+						<field name="includeInReport">:false</field>
+					    </base>
+
+					    <field name="cardinalityMinimum">1</field>
+					    <field name="cardinalityMaximum">1</field>
+					    <field name="lifetime"></field>
+					    <field name="initialisation"></field>
+					    <field name="demise"></field>
+					    <field name="includedPlans"><list>
+						<object type="Plan" id="8">
+						    <base type="Entity">
+							<field name="name">Plan Autenticar</field>
+							<field name="description"></field>
+							<field name="uniqueId">289</field>
+						    </base>
+
+						    <field name="percepts"><list>
+							<object type="Percept" id="9">
+							    <base type="Interaction">
+								<base type="Entity">
+								    <field name="name">Log in</field>
+								    <field name="description">Lo genera un actor externo, clientre web.</field>
+								    <field name="uniqueId">158</field>
+								</base>
+
+							    </base>
+
+							    <field name="source">Clientre web</field>
+							    <field name="informationCarried">Datos del usuario.</field>
+							    <field name="knowledgeUpdated"></field>
+							    <field name="processing"></field>
+							    <field name="frequency"></field>
+							    <field name="agentsResponding"><list>
+								<object ref="7"/>
+								</list>
+							    </field>
+							    <field name="externalToSystem">:true</field>
+							    <field name="externalPath"></field>
+							</object>
+							</list>
+						    </field>
+						    <field name="data"><list>
+							<object type="DataConnection" id="10">
+							    <base type="Entity">
+								<field name="name">&lt;Prometheus unique entity name au.edu.rmit.cs.prometheus.datamodel.jacob.DataConnection ID=287&gt;</field>
+								<field name="uniqueId">287</field>
+							    </base>
+
+							    <field name="type">
+								<object type="Data" id="11">
+								    <base type="Entity">
+									<field name="name">DB Usuario</field>
+									<field name="description">Contiene los datos del perfilado basico del usuario.</field>
+									<field name="uniqueId">121</field>
+								    </base>
+
+								    <field name="dataType">Email, Password, Nombre.</field>
+								    <field name="includedFields"></field>
+								    <field name="writtenBy"><list>
+									<object ref="7"/>
+									</list>
+								    </field>
+								    <field name="readBy"><list>
+									<object ref="7"/>
+									</list>
+								    </field>
+								    <field name="initialisation"></field>
+								    <field name="writtenWhen"></field>
+								    <field name="connections"><list>
+									<object type="DataConnection" id="12">
+									    <base type="Entity">
+										<field name="name">&lt;Prometheus unique entity name au.edu.rmit.cs.prometheus.datamodel.jacob.DataConnection ID=129&gt;</field>
+										<field name="uniqueId">129</field>
+									    </base>
+
+									    <field name="type">
+										<object ref="11"/>
+									    </field>
+									    <field name="readingEntities"><list>
+										<object ref="7"/>
+										</list>
+									    </field>
+									    <field name="writingEntities"><list>
+										<object ref="7"/>
+										</list>
+									    </field>
+									    <field name="childConnections"><list>
+										<object type="DataConnection" id="13">
+										    <base type="Entity">
+											<field name="name">&lt;Prometheus unique entity name au.edu.rmit.cs.prometheus.datamodel.jacob.DataConnection ID=170&gt;</field>
+											<field name="uniqueId">170</field>
+										    </base>
+
+										    <field name="type">
+											<object ref="11"/>
+										    </field>
+										    <field name="readingEntities"><list>
+											<object ref="8"/>
+
+											<object ref="5"/>
+											</list>
+										    </field>
+										    <field name="writingEntities"><list>
+											<object ref="5"/>
+											</list>
+										    </field>
+										    <field name="parentConnection">
+											<object ref="12"/>
+										    </field>
+										    <field name="childConnections"><list>
+											<object type="DataConnection" id="14">
+											    <base type="Entity">
+												<field name="name">&lt;Prometheus unique entity name au.edu.rmit.cs.prometheus.datamodel.jacob.DataConnection ID=285&gt;</field>
+												<field name="uniqueId">285</field>
+											    </base>
+
+											    <field name="type">
+												<object ref="11"/>
+											    </field>
+											    <field name="readingEntities"><list>
+												<object ref="5"/>
+												</list>
+											    </field>
+											    <field name="writingEntities"><list>
+												<object ref="5"/>
+												</list>
+											    </field>
+											    <field name="parentConnection">
+												<object ref="13"/>
+											    </field>
+											</object>
+
+											<object ref="10"/>
+											</list>
+										    </field>
+										</object>
+										</list>
+									    </field>
+									</object>
+
+									<object ref="13"/>
+
+									<object ref="14"/>
+
+									<object ref="10"/>
+									</list>
+								    </field>
+								    <field name="externalPath"></field>
+								</object>
+							    </field>
+							    <field name="readingEntities"><list>
+								<object ref="8"/>
+								</list>
+							    </field>
+							    <field name="parentConnection">
+								<object ref="13"/>
+							    </field>
+							</object>
+
+							<object ref="13"/>
+							</list>
+						    </field>
+						    <field name="context"></field>
+						    <field name="failure"></field>
+						    <field name="failureRecovery"></field>
+						    <field name="procedure"></field>
+						</object>
+
+						<object ref="5"/>
+						</list>
+					    </field>
+					    <field name="goals"><list>
+						<object type="Goal" id="15">
+						    <base type="Entity">
+							<field name="name">Registrar e Indenficar Usuario</field>
+							<field name="description">Registrar un usuario nuevo en el sistema e indentificarlo.</field>
+							<field name="uniqueId">102</field>
+						    </base>
+
+						</object>
+
+						<object type="Goal" id="16">
+						    <base type="Entity">
+							<field name="name">Identificar usuario</field>
+							<field name="description">Identificar al usuario en el sistema.</field>
+							<field name="uniqueId">103</field>
+						    </base>
+
+						</object>
+						</list>
+					    </field>
+					    <field name="percepts"><list>
+						<object ref="6"/>
+
+						<object ref="9"/>
+						</list>
+					    </field>
+					    <field name="roles"><list>
+						<object type="Role" id="17">
+						    <base type="Entity">
+							<field name="name">Registrador</field>
+							<field name="description">Rol de resgistrar e identificar al usuario en el sistema.</field>
+							<field name="uniqueId">116</field>
+						    </base>
+
+						    <field name="goals"><list>
+							<object ref="15"/>
+							</list>
+						    </field>
+						    <field name="percepts"><list>
+							<object ref="6"/>
+							</list>
+						    </field>
+						    <field name="dataRead"><list>
+							<object ref="11"/>
+							</list>
+						    </field>
+						    <field name="dataWritten"><list>
+							<object ref="11"/>
+							</list>
+						    </field>
+						</object>
+
+						<object type="Role" id="18">
+						    <base type="Entity">
+							<field name="name">Identificador</field>
+							<field name="description">Identifica al usuario en el sistema.</field>
+							<field name="uniqueId">149</field>
+						    </base>
+
+						    <field name="goals"><list>
+							<object ref="16"/>
+							</list>
+						    </field>
+						    <field name="percepts"><list>
+							<object ref="9"/>
+							</list>
+						    </field>
+						    <field name="dataRead"><list>
+							<object ref="11"/>
+							</list>
+						    </field>
+						    <field name="dataWritten"><list>
+							<object ref="11"/>
+							</list>
+						    </field>
+						</object>
+						</list>
+					    </field>
+					    <field name="data"><list>
+						<object ref="13"/>
+						</list>
+					    </field>
+					</object>
+					</list>
+				    </field>
+				    <field name="externalPath"></field>
+				</object>
+				</list>
+			    </field>
+			    <field name="data"><list>
+				<object ref="14"/>
+
+				<object ref="13"/>
+				</list>
+			    </field>
+			    <field name="context"></field>
+			    <field name="failure"></field>
+			    <field name="failureRecovery"></field>
+			    <field name="procedure"></field>
+			</object>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="19">
+			    <field name="x">188</field>
+			    <field name="y">166</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="20">
+		    <field name="entity">
+			<object ref="8"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="21">
+			    <field name="x">563</field>
+			    <field name="y">165</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="22">
+		    <field name="entity">
+			<object ref="13"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="23">
+			    <field name="x">398</field>
+			    <field name="y">160</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="24">
+		    <field name="entity">
+			<object ref="6"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="25">
+			    <field name="x">190</field>
+			    <field name="y">29</field>
+			</object>
+		    </field>
+		</object>
+
+		<object type="DiagramEntitySetting" id="26">
+		    <field name="entity">
+			<object ref="9"/>
+		    </field>
+		    <field name="location">
+			<object type="Coordinate" id="27">
+			    <field name="x">580</field>
+			    <field name="y">23</field>
+			</object>
+		    </field>
+		</object>
+		</list>
+	    </field>
+	</object>
+
+	<object type="DiagramSettings" id="28">
+	    <field name="diagramId">
+		<object type="DiagramId" id="29">
+		    <field name="stringId">Analysis Overview</field>
+		</object>
+	    </field>
+	    <field name="entitySettings"><list>
+		<object type="DiagramEntitySetting" id="30">
+		    <field name="entity">
+			<object type="Percept" id="31">
+			    <base type="Interaction">
+				<base type="Entity">
+				    <field name="name">Plan aceptado</field>
+				    <field name="description">Lo genera el cliente Web, una vez se ha seleccionado el plan.</field>
+				    <field name="uniqueId">67</field>
+				    <field name="connectTo"><list>
+					<object type="Actor" id="32">
+					    <base type="Entity">
+						<field name="name">SIstema</field>
+						<field name="description">Sistema que genera un plan dado un parametros especificos.</field>
+						<field name="uniqueId">88</field>
+						<field name="includeInReport">:false</field>
+						<field name="connectTo"><list>
+						    <object type="Action" id="33">
+							<base type="Interaction">
+							    <base type="Entity">
+								<field name="name">Ac. Informar Contrato</field>
+								<field name="description">Se informa al usuario del pago del plan, con la respectiva documentacion.</field>
+								<field name="uniqueId">68</field>
+								<field name="connectTo"><list>
+								    <object type="Actor" id="34">
+									<base type="Entity">
+									    <field name="name">Cliente Web</field>
+									    <field name="description">Sistema que actua de intermediario entre el gestor de planes de viaje y el usuario consumidor.</field>
+									    <field name="uniqueId">93</field>
+									    <field name="includeInReport">:false</field>
+									    <field name="connectTo"><list>
+										<object type="Percept" id="35">
+										    <base type="Interaction">
+											<base type="Entity">
+											    <field name="name">Peticion de plan</field>
+											    <field name="description">Lo genera el cliente web.</field>
+											    <field name="uniqueId">50</field>
+											    <field name="connectTo"><list>
+												<object ref="32"/>
+												</list>
+											    </field>
+											</base>
+
+										    </base>
+
+										    <field name="source">Cliente Web</field>
+										    <field name="informationCarried">Preferencias y restricciones del usuario.</field>
+										    <field name="knowledgeUpdated"></field>
+										    <field name="processing"></field>
+										    <field name="frequency"></field>
+										    <field name="agentsResponding"><list>
+											<object type="Agent" id="36">
+											    <base type="Entity">
+												<field name="name">Ag. Administrativo</field>
+												<field name="description">Es el intermediario entre el sistema y el usario.</field>
+												<field name="uniqueId">122</field>
+												<field name="includeInReport">:false</field>
+											    </base>
+
+											    <field name="cardinalityMinimum">1</field>
+											    <field name="cardinalityMaximum">5</field>
+											    <field name="lifetime"></field>
+											    <field name="initialisation"></field>
+											    <field name="demise"></field>
+											    <field name="includedCapabilities"><list>
+												<object type="Capability" id="37">
+												    <base type="Entity">
+													<field name="name">Cp. Comunicar plan</field>
+													<field name="description"></field>
+													<field name="uniqueId">423</field>
+												    </base>
+
+												    <field name="processes"></field>
+												    <field name="notes"></field>
+												    <field name="actions"><list>
+													<object type="Action" id="38">
+													    <base type="Interaction">
+														<base type="Entity">
+														    <field name="name">Ac. Informar plan</field>
+														    <field name="description">Se informa al usario del plan creado.</field>
+														    <field name="uniqueId">167</field>
+														    <field name="connectTo"><list>
+															<object ref="34"/>
+															</list>
+														    </field>
+														</base>
+
+													    </base>
+
+													    <field name="parameters"></field>
+													    <field name="durationDescription"></field>
+													    <field name="failureNotificationDescription">No se han encontrado planes con esas pereferencias.</field>
+													    <field name="partialChange"></field>
+													    <field name="sideEffects"></field>
+													</object>
+
+													<object ref="33"/>
+
+													<object type="Action" id="39">
+													    <base type="Interaction">
+														<base type="Entity">
+														    <field name="name">Ac. Informar pago justificado</field>
+														    <field name="uniqueId">332</field>
+														    <field name="connectTo"><list>
+															<object ref="34"/>
+															</list>
+														    </field>
+														</base>
+
+													    </base>
+
+													</object>
+													</list>
+												    </field>
+												    <field name="percepts"><list>
+													<object ref="35"/>
+
+													<object ref="31"/>
+													</list>
+												    </field>
+												    <field name="includedPlans"><list>
+													<object type="Plan" id="40">
+													    <base type="Entity">
+														<field name="name">Plan Recibir plan</field>
+														<field name="description"></field>
+														<field name="uniqueId">435</field>
+													    </base>
+
+													    <field name="actions"><list>
+														<object ref="38"/>
+														</list>
+													    </field>
+													    <field name="percepts"><list>
+														<object ref="35"/>
+														</list>
+													    </field>
+													    <field name="incomingMessages"><list>
+														<object type="MessageDistributionPair" id="41">
+														    <base type="Entity">
+															<field name="name">planMessagePair-437</field>
+															<field name="uniqueId">437</field>
+														    </base>
+
+														    <field name="type">
+															<object type="Message" id="42">
+															    <base type="Interaction">
+																<base type="Entity">
+																    <field name="name">Resultado creacion plan</field>
+																    <field name="description"></field>
+																    <field name="uniqueId">322</field>
+																</base>
+
+															    </base>
+
+															    <field name="distribution"><list>
+																<object type="MessageDistributionPair" id="43">
+																    <base type="Entity">
+																	<field name="name">protocolMessagePair-323</field>
+																	<field name="uniqueId">323</field>
+																    </base>
+
+																    <field name="type">
+																	<object ref="42"/>
+																    </field>
+																    <field name="toEntities"><list>
+																	<object ref="36"/>
+																	</list>
+																    </field>
+																    <field name="fromEntities"><list>
+																	<object type="Agent" id="44">
+																	    <base type="Entity">
+																		<field name="name">Ag. Planificador</field>
+																		<field name="description">Se ncarga de generar un el plan de viaje.</field>
+																		<field name="uniqueId">87</field>
+																		<field name="includeInReport">:false</field>
+																	    </base>
+
+																	    <field name="cardinalityMinimum">1</field>
+																	    <field name="cardinalityMaximum">1</field>
+																	    <field name="lifetime"></field>
+																	    <field name="initialisation"></field>
+																	    <field name="demise"></field>
+																	    <field name="includedCapabilities"><list>
+																		<object type="Capability" id="45">
+																		    <base type="Entity">
+																			<field name="name">Cp. Gestionar Plan</field>
+																			<field name="description"></field>
+																			<field name="uniqueId">400</field>
+																		    </base>
+
+																		    <field name="processes"></field>
+																		    <field name="notes"></field>
+																		    <field name="includedPlans"><list>
+																			<object type="Plan" id="46">
+																			    <base type="Entity">
+																				<field name="name">Plan Obtener Datos</field>
+																				<field name="description"></field>
+																				<field name="uniqueId">413</field>
+																			    </base>
+
+																			    <field name="incomingMessages"><list>
+																				<object type="MessageDistributionPair" id="47">
+																				    <base type="Entity">
+																					<field name="name">planMessagePair-417</field>
+																					<field name="uniqueId">417</field>
+																				    </base>
+
+																				    <field name="type">
+																					<object type="Message" id="48">
+																					    <base type="Interaction">
+																						<base type="Entity">
+																						    <field name="name">Resultado busqueda Transportes</field>
+																						    <field name="description"></field>
+																						    <field name="uniqueId">296</field>
+																						</base>
+
+																					    </base>
+
+																					    <field name="distribution"><list>
+																						<object type="MessageDistributionPair" id="49">
+																						    <base type="Entity">
+																							<field name="name">protocolMessagePair-297</field>
+																							<field name="uniqueId">297</field>
+																						    </base>
+
+																						    <field name="type">
+																							<object ref="48"/>
+																						    </field>
+																						    <field name="toEntities"><list>
+																							<object ref="44"/>
+																							</list>
+																						    </field>
+																						    <field name="fromEntities"><list>
+																							<object type="Agent" id="50">
+																							    <base type="Entity">
+																								<field name="name">Ag. Gestor de Transporte</field>
+																								<field name="description">Se encarga de obtener la informacion del transporte.</field>
+																								<field name="uniqueId">159</field>
+																								<field name="includeInReport">:false</field>
+																							    </base>
+
+																							    <field name="cardinalityMinimum">1</field>
+																							    <field name="cardinalityMaximum">1</field>
+																							    <field name="lifetime"></field>
+																							    <field name="initialisation"></field>
+																							    <field name="demise"></field>
+																							    <field name="includedCapabilities"><list>
+																								<object type="Capability" id="51">
+																								    <base type="Entity">
+																									<field name="name">Cp. Obtener datos Transporte</field>
+																									<field name="description"></field>
+																									<field name="uniqueId">345</field>
+																								    </base>
+
+																								    <field name="processes"></field>
+																								    <field name="notes"></field>
+																								    <field name="actions"><list>
+																									<object type="Action" id="52">
+																									    <base type="Interaction">
+																										<base type="Entity">
+																										    <field name="name">Ac. Buscar Transporte</field>
+																										    <field name="description">Busca los transportes con las preferencias y restricciones del usuario que permita el actor externo.</field>
+																										    <field name="uniqueId">154</field>
+																										    <field name="connectTo"><list>
+																											<object type="Actor" id="53">
+																											    <base type="Entity">
+																												<field name="name">Buscador Transporte</field>
+																												<field name="description">Sistema que obtiene la informacion de transportes.</field>
+																												<field name="uniqueId">89</field>
+																												<field name="includeInReport">:false</field>
+																												<field name="connectTo"><list>
+																												    <object type="Percept" id="54">
+																													<base type="Interaction">
+																													    <base type="Entity">
+																														<field name="name">Datos de Transporte</field>
+																														<field name="description">Lo genera un actor externo, buscador de alojamiento.</field>
+																														<field name="uniqueId">58</field>
+																														<field name="connectTo"><list>
+																														    <object ref="32"/>
+																														    </list>
+																														</field>
+																													    </base>
+
+																													</base>
+
+																													<field name="source">Buscador Transporte</field>
+																													<field name="informationCarried">Transportes que cumplen las preferencias del usuario.</field>
+																													<field name="knowledgeUpdated">Conjunto de transportes obtenidos.</field>
+																													<field name="processing"></field>
+																													<field name="frequency"></field>
+																													<field name="agentsResponding"><list>
+																													    <object ref="50"/>
+																													    </list>
+																													</field>
+																													<field name="externalToSystem">:true</field>
+																													<field name="externalPath"></field>
+																												    </object>
+																												    </list>
+																												</field>
+																											    </base>
+
+																											</object>
+																											</list>
+																										    </field>
+																										</base>
+
+																									    </base>
+
+																									    <field name="parameters">Preferencias y restricciones del usuario.</field>
+																									    <field name="durationDescription"></field>
+																									    <field name="failureNotificationDescription"></field>
+																									    <field name="partialChange"></field>
+																									    <field name="sideEffects">El sistema recibe la percepcion con los transportes encontrados.</field>
+																									</object>
+																									</list>
+																								    </field>
+																								    <field name="percepts"><list>
+																									<object ref="54"/>
+																									</list>
+																								    </field>
+																								    <field name="includedPlans"><list>
+																									<object type="Plan" id="55">
+																									    <base type="Entity">
+																										<field name="name">Plan Obtener transportes localmente</field>
+																										<field name="description"></field>
+																										<field name="uniqueId">349</field>
+																									    </base>
+
+																									    <field name="incomingMessages"><list>
+																										<object type="MessageDistributionPair" id="56">
+																										    <base type="Entity">
+																											<field name="name">planMessagePair-351</field>
+																											<field name="uniqueId">351</field>
+																										    </base>
+
+																										    <field name="type">
+																											<object type="Message" id="57">
+																											    <base type="Interaction">
+																												<base type="Entity">
+																												    <field name="name">Obten Transportes</field>
+																												    <field name="description"></field>
+																												    <field name="uniqueId">292</field>
+																												</base>
+
+																											    </base>
+
+																											    <field name="distribution"><list>
+																												<object type="MessageDistributionPair" id="58">
+																												    <base type="Entity">
+																													<field name="name">protocolMessagePair-293</field>
+																													<field name="uniqueId">293</field>
+																												    </base>
+
+																												    <field name="type">
+																													<object ref="57"/>
+																												    </field>
+																												    <field name="toEntities"><list>
+																													<object ref="50"/>
+																													</list>
+																												    </field>
+																												    <field name="fromEntities"><list>
+																													<object ref="44"/>
+																													</list>
+																												    </field>
+																												    <field name="childDistributionPairs"><list>
+																													<object type="MessageDistributionPair" id="59">
+																													    <base type="Entity">
+																														<field name="name">agentMessagePair-294</field>
+																														<field name="uniqueId">294</field>
+																													    </base>
+
+																													    <field name="type">
+																														<object ref="57"/>
+																													    </field>
+																													    <field name="toEntities"><list>
+																														<object ref="51"/>
+																														</list>
+																													    </field>
+																													    <field name="parentDistributionPairs"><list>
+																														<object ref="58"/>
+																														</list>
+																													    </field>
+																													    <field name="childDistributionPairs"><list>
+																														<object type="MessageDistributionPair" id="60">
+																														    <base type="Entity">
+																															<field name="name">capabilityMessagePair-347</field>
+																															<field name="uniqueId">347</field>
+																														    </base>
+
+																														    <field name="type">
+																															<object ref="57"/>
+																														    </field>
+																														    <field name="toEntities"><list>
+																															<object ref="55"/>
+																															</list>
+																														    </field>
+																														    <field name="parentDistributionPairs"><list>
+																															<object ref="59"/>
+																															</list>
+																														    </field>
+																														    <field name="childDistributionPairs"><list>
+																															<object ref="56"/>
+																															</list>
+																														    </field>
+																														    <field name="owner">
+																															<object ref="51"/>
+																														    </field>
+																														</object>
+																														</list>
+																													    </field>
+																													    <field name="owner">
+																														<object ref="50"/>
+																													    </field>
+																													</object>
+
+																													<object type="MessageDistributionPair" id="61">
+																													    <base type="Entity">
+																														<field name="name">agentMessagePair-295</field>
+																														<field name="uniqueId">295</field>
+																													    </base>
+
+																													    <field name="type">
+																														<object ref="57"/>
+																													    </field>
+																													    <field name="fromEntities"><list>
+																														<object ref="45"/>
+																														</list>
+																													    </field>
+																													    <field name="parentDistributionPairs"><list>
+																														<object ref="58"/>
+																														</list>
+																													    </field>
+																													    <field name="childDistributionPairs"><list>
+																														<object type="MessageDistributionPair" id="62">
+																														    <base type="Entity">
+																															<field name="name">capabilityMessagePair-406</field>
+																															<field name="uniqueId">406</field>
+																														    </base>
+
+																														    <field name="type">
+																															<object ref="57"/>
+																														    </field>
+																														    <field name="fromEntities"><list>
+																															<object ref="46"/>
+																															</list>
+																														    </field>
+																														    <field name="parentDistributionPairs"><list>
+																															<object ref="61"/>
+																															</list>
+																														    </field>
+																														    <field name="childDistributionPairs"><list>
+																															<object type="MessageDistributionPair" id="63">
+																															    <base type="Entity">
+																																<field name="name">planMessagePair-416</field>
+																																<field name="uniqueId">416</field>
+																															    </base>
+
+																															    <field name="type">
+																																<object ref="57"/>
+																															    </field>
+																															    <field name="parentDistributionPairs"><list>
+																																<object ref="62"/>
+																																</list>
+																															    </field>
+																															    <field name="owner">
+																																<object ref="46"/>
+																															    </field>
+																															</object>
+																															</list>
+																														    </field>
+																														    <field name="owner">
+																															<object ref="45"/>
+																														    </field>
+																														</object>
+																														</list>
+																													    </field>
+																													    <field name="owner">
+																														<object ref="44"/>
+																													    </field>
+																													</object>
+																													</list>
+																												    </field>
+																												    <field name="owner">
+																													<object type="Protocol" id="64">
+																													    <base type="Entity">
+																														<field name="name">Pr. Planificador-Transporte</field>
+																														<field name="uniqueId">290</field>
+																													    </base>
+
+																													    <field name="includedMessages"><list>
+																														<object ref="58"/>
+
+																														<object ref="49"/>
+																														</list>
+																													    </field>
+																													    <field name="protocolDistributionPairs"><list>
+																														<object type="ProtocolDistributionPair" id="65">
+																														    <base type="Entity">
+																															<field name="name">&lt;Prometheus unique entity name au.edu.rmit.cs.prometheus.datamodel.jacob.ProtocolDistributionPair ID=291&gt;</field>
+																															<field name="uniqueId">291</field>
+																														    </base>
+
+																														    <field name="type">
+																															<object ref="64"/>
+																														    </field>
+																														    <field name="agent1">
+																															<object ref="50"/>
+																														    </field>
+																														    <field name="agent2">
+																															<object ref="44"/>
+																														    </field>
+																														</object>
+																														</list>
+																													    </field>
+																													    <field name="agents"><list>
+																														<object ref="44"/>
+
+																														<object ref="50"/>
+																														</list>
+																													    </field>
+>>>>>>> 5fa48261bb5c222285b0dc4fa0aa215d94bf4fa6
 																													    <field name="aumlText">start Pr. Planificador-Transporte
 agent A Ag. Planificador
 agent B Ag. Gestor de Transporte

@@ -16,7 +16,7 @@ from skyscanner.skyscanner import Flights
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
 parser.add_argument('--host', default='localhost', help="Host del agente")
-parser.add_argument('--port', type=int, help="Puerto de comunicacion del agente")
+parser.add_argument('--port', type=int,  help="Puerto de comunicacion del agente")
 parser.add_argument('--acomm', help='Direccion del agente con el que comunicarse')
 parser.add_argument('--aport', type=int, help='Puerto del agente con el que comunicarse')
 parser.add_argument('--messages', nargs='+', default=[], help="mensajes a enviar")
