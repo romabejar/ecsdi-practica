@@ -24,7 +24,7 @@ from AgentUtil.Agent import Agent
 from AgentUtil.FlaskServer import shutdown_server
 from AgentUtil.Logging import config_logger
 
-__author__ = 'javier'
+__author__ = 'bejar'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()

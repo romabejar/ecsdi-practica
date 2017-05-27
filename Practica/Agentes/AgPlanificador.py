@@ -22,7 +22,7 @@ from AgentUtil.FlaskServer import shutdown_server
 from AgentUtil.Logging import config_logger
 
 
-__author__ = 'amazadonde'
+__author__ = 'bejar'
 
 # Definimos los parametros de la linea de comandos
 parser = argparse.ArgumentParser()
@@ -58,7 +58,6 @@ if args.dhost is None:
     dhostname = socket.gethostname()
 else:
     dhostname = args.dhost
-
     # Agent Namespace
     agn = Namespace("http://www.agentes.org#")
 
@@ -146,9 +145,23 @@ def communication():
             accion = gm.value(subject=content, predicate=RDF.type)
 
             if accion == ECSDI.peticion_de_plan:
+                ciudad = gm.value(subject=content, predicate=ECSDI.tiene_como_destino)
+                miciudad = gm.value(subject=ciudad, predicate=ECSDI.nombre)
 
-                logger.info("Estoy en else")
-                logger.info(accion)
+                # Anadir mas parametros
+                restriccions_ciudad = {}
+                restriccions_ciudad['ciudadNombre']=miciudad
+                buscar_actividades(**restriccions_ciudad)
+
+                logger.info("Mensaje peticionn de plan")
+                logger.info(miciudad)
+
+
+            else:
+                gr = build_message(Graph(),
+                               ACL['not-understood'],
+                               sender=DirectoryAgent.uri,
+                               msgcnt=get_count())
 
 
 
@@ -157,6 +170,27 @@ def communication():
 
     serialize = gr.serialize(format='xml')
     return serialize, 200
+
+
+
+def buscar_actividades(ciudadNombre='Barcelona'):
+    content = ECSDI['peticion_de_actividades' + str(get_count())]
+
+    ciudad = ECSDI['ciudad' + str(get_count())]
+    localizacion = ECSDI['localizacion' + str(get_count())]
+
+    grafo = Graph()
+
+    grafo.add((ciudad, ECSDI.nombre, Literal(ciudadNombre)))
+    grafo.add((localizacion, ECSDI.pertenece_a, URIRef(ciudad)))
+    grafo.add((content, RDF.type, ECSDI.peticion_de_actividades))
+    grafo.add((content,ECSDI.tiene_como_restriccion_de_localizacion, URIRef(localizacion)))
+
+    agente_actividades = get_agent_info(agn.AgGestorActividades, DirectoryAgent, PlannerAgent, get_count())
+
+    gr = send_message(build_message(grafo,perf=ACL.request, sender=PlannerAgent.uri, receiver=agente_actividades.uri,
+                                  msgcnt=get_count(),
+                                  content=content), agente_actividades.address)
 
 
 @app.route("/Stop")
