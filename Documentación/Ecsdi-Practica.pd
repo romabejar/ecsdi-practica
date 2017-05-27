@@ -13,8 +13,8 @@ que son adicionales, que permiten gestionar todos los elementos que forman parte
 Por otra parte, el sistema emplea servicios que favorecen el correcto funcionamiento del mismo</field>
 	    <field name="version">1.0</field>
 	    <field name="fileNameLastSavedAs">Ecsdi-Practica.pd</field>
-	    <field name="filePathLastSavedIn">C:\Users\German\Desktop\ecsdi-practica\Documentación</field>
-	    <field name="openedAs">C:\Users\German\Desktop\ecsdi-practica\Documentación\Ecsdi-Practica.pd</field>
+	    <field name="filePathLastSavedIn">/home/german/Escritorio/ecsdi-practica/DocumentaciÃ³n</field>
+	    <field name="openedAs">/home/german/Escritorio/ecsdi-practica/DocumentaciÃ³n/Ecsdi-Practica.pd</field>
 	    <field name="author">Roma Bejar, Cristian Jara, German Mora, Sergi M.</field>
 	    <field name="applicationVersion">3.3b_internal</field>
 	</object>

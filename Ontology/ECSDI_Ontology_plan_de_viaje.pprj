@@ -1,4 +1,4 @@
-; Tue May 23 19:08:35 CEST 2017
+; Sat May 27 00:30:03 CEST 2017
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class140]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class141]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class142]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class143]
-		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class144]))
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class55]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class56]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class57]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class58]
+		[ECSDI_Ontology_plan_de_viaje_ProjectKB_Class59]))
 
 ([CLSES_TAB] of  Widget
 
@@ -45,31 +45,6 @@
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class14] of  Property_List
 )
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class140] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class141] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class142] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class143] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class144] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class15] of  Widget
 
@@ -156,7 +131,7 @@
 
 	(is_hidden TRUE)
 	(property_list [ECSDI_Ontology_plan_de_viaje_ProjectKB_Class32])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class32] of  Property_List
 )
@@ -165,7 +140,7 @@
 
 	(is_hidden TRUE)
 	(property_list [ECSDI_Ontology_plan_de_viaje_ProjectKB_Class34])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class34] of  Property_List
 )
@@ -269,6 +244,31 @@
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class54] of  Property_List
 )
 
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class55] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class56] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class57] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class58] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class59] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class6] of  Property_List
 )
 
@@ -276,7 +276,7 @@
 
 	(is_hidden TRUE)
 	(property_list [ECSDI_Ontology_plan_de_viaje_ProjectKB_Class8])
-	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
 
 ([ECSDI_Ontology_plan_de_viaje_ProjectKB_Class8] of  Property_List
 )
@@ -285,7 +285,7 @@
 
 	(is_hidden TRUE)
 	(property_list [ECSDI_Ontology_plan_de_viaje_ProjectKB_Class10])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
 
 ([empty.owl_ProjectKB_Class5] of  String
 
@@ -751,6 +751,9 @@
 ([KB_140180_Instance_9] of  Property_List
 )
 
+([KB_197774_Class0] of  Map
+)
+
 ([KB_221055_Instance_10] of  Widget
 
 	(height 0)
@@ -906,9 +909,6 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
-)
-
-([KB_255698_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
