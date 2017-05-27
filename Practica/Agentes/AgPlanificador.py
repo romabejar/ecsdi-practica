@@ -131,13 +131,27 @@ def communication():
         # Si no es, respondemos que no hemos entendido el mensaje
         gr = build_message(Graph(), ACL['not-understood'], sender=PlannerAgent.uri, msgcnt=get_count())
     else:
-        # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
-        # de registro
-        content = msgdic['content']
-        # Averiguamos el tipo de la accion
-        accion = gm.value(subject=content, predicate=RDF.type)
-        logger.info("Estoy en else")
-        logger.info(accion)
+        # Obtenemos la performativa
+        if msgdic['performative'] != ACL.request:
+            # Si no es un request, respondemos que no hemos entendido el mensaje
+            gr = build_message(Graph(),
+                               ACL['not-understood'],
+                               sender=DirectoryAgent.uri,
+                               msgcnt=get_count())
+        else:
+            # Extraemos el objeto del contenido que ha de ser una accion de la ontologia
+            # de registro
+            content = msgdic['content']
+            # Averiguamos el tipo de la accion
+            accion = gm.value(subject=content, predicate=RDF.type)
+
+            if accion == ECSDI.peticion_de_plan:
+
+                logger.info("Estoy en else")
+                logger.info(accion)
+
+
+
 
     logger.info('Respondemos a la peticion')
 
