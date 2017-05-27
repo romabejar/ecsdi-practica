@@ -8,10 +8,15 @@ Agent que implementa la interacció amb l'usuari
 @author: bejar
 """
 import random
+
+import json
+import pprint
+import argparse
 from multiprocessing import Queue, Process
 import sys
 from AgentUtil.ACLMessages import get_agent_info, send_message, build_message, get_message_properties, register_agent
 from AgentUtil.OntoNamespaces import ECSDI, ACL
+from googleplaces import GooglePlaces
 import argparse
 import socket
 from multiprocessing import Process
@@ -154,8 +159,6 @@ def communication():
                 if estaEnCache:
                     return True
                 else:
-
-
                     # Anadir mas parametros
                     restriccions_ciudad = {}
                     restriccions_ciudad['ciudadNombre='] = miciudad
@@ -163,6 +166,52 @@ def communication():
 
                     logger.info("Mensaje peticionn de plan")
                     logger.info(miciudad)
+
+                    json_data = buscar_actividades_externamente("Barcelona", "Spain", 20000)
+                    # Grafo donde retornaremos el resultado
+                    # Hago bind de las ontologias que usaremos en el grafo
+
+                    # gr.bind('myns_act', myns_act)
+                    # gr.bind('myns_atr', myns_atr)
+                    # gr.bind('myns_loc', myns_loc)
+                    # gr.bind('myns_periodo', myns_periodo)
+                    # gr.bind('myns_compania', myns_compania)
+                    #
+                    # for place in json_data.places:
+                    #     plc_obj = myns_act[place.place_id]
+                    #     loc_obj = myns_loc[place.place_id]
+                    #     periodo = myns_periodo[place.place_id]
+                    #     compania = myns_compania[place.place_id]
+                    #
+                    #     # Localizacion
+                    #     gr.add((loc_obj, myns_atr.longitud, Literal("15.9")))  # Parsear de la llamada a la api
+                    #     gr.add((loc_obj, myns_atr.latitud, Literal("12.9")))  # Parsear de la llamada a la api
+                    #
+                    #     # Periodo
+                    #     gr.add((periodo, myns_atr.inicio, Literal("11:00")))
+                    #     gr.add((periodo, myns_atr.fin, Literal("12:50")))
+                    #
+                    #     # Compania
+                    #     gr.add((compania, myns_atr.nombre, Literal("Roman Airlines")))
+                    #     gr.add((compania, myns_atr.ofrece, plc_obj))
+                    #
+                    #     # Actividad
+                    #     gr.add((plc_obj, myns_atr.esUn, myns.activiad))
+                    #     gr.add((plc_obj, myns_atr.coste, Literal("15")))
+                    #     gr.add((plc_obj, myns_atr.se_encuentra_en, loc_obj))
+                    #     gr.add((plc_obj, myns_atr.tipo_de_actividad, Literal("Fiesta")))
+                    #     gr.add((plc_obj, myns_atr.tiene_como_horario, periodo))
+                    #     gr.add((plc_obj, myns_atr.es_ofrecido_por, compania))
+                    #
+                    #     gr = build_message(gr,
+                    #                        ACL['inform-'],
+                    #                        sender=AgentePlanificador.uri,
+                    #                        msgcnt=mss_cnt,
+                    #                        receiver=msgdic['sender'])
+                    #
+                    # mss_cnt += 1
+
+                    return True
 
 
             else:
@@ -204,6 +253,56 @@ def agent_behaviour(queue):
 
     gr = register_message()
 
+
+
+def buscar_actividades_externamente(destinationCity="Barcelona", destinationCountry="Spain", radius=20000):
+    logger.info(2)
+
+    YOUR_API_KEY = 'AIzaSyCyjudYWWbnReJa3LdTgfnQXgLxIyXvLSk'
+    google_places = GooglePlaces(YOUR_API_KEY)
+    logger.info(3)
+
+    location = "Barcelona, Spain"
+    keyword = "Discoteca"
+    type = "night_club"
+    logger.info(4)
+
+    # You may prefer to use the text_search API, instead.
+    query_result = google_places.nearby_search(
+        location=location, keyword=keyword,
+        radius=radius, types=type)
+    # placestring = "Name: %s, GeoLoc: %s, Reference: %s, Phone: %s \n"(places[0].name, places[0].geo_location, places[0].reference, places[0].local_phone_number)
+    logger.info(5)
+    resultado = {}
+    i = 0
+    for place in query_result.places:
+        place_json = {}
+        # Returned places from a query are place summaries.
+        # print place.name
+        # print place.geo_location
+        # print place.reference
+        place.get_details()
+        place_json['name'] = place.name
+        place_json['lat'] = float(place.geo_location['lat'])
+        place_json['lng'] = float(place.geo_location['lng'])
+        # place_json['reference'] = place.reference
+        # place_json['details'] = place.details
+        # The following method has to make a further API call.
+        # Referencing any of the attributes below, prior to making a call to
+        # get_details() will raise a googleplaces.GooglePlacesAttributeError.
+        # print place.details # A dict matching the JSON response from Google.
+        # print place.local_phone_number
+        # print place.international_phone_number
+        # print place.website
+        # print place.url
+        resultado[i] = place_json
+        print i
+        print resultado[i]
+        i = i + 1
+
+    json_data = json.dumps(resultado)
+    logger.info(json_data)
+    return json_data
 
 if __name__ == '__main__':
     # ------------------------------------------------------------------------------------------------------
