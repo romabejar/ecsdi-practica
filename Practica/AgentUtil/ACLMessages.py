@@ -11,7 +11,7 @@ Created on 08/02/2014
 __author__ = 'javier'
 
 import requests
-from rdflib import Graph, Namespace, Literal
+from rdflib import Graph, Namespace, Literal, logger
 from rdflib.namespace import RDF, FOAF
 from OntoNamespaces import ACL, DSO
 from Agent import Agent
@@ -53,7 +53,6 @@ def send_message(gmess, address):
     """
     msg = gmess.serialize(format='xml')
     r = requests.get(address, params={'content': msg})
-
     # Procesa la respuesta y la retorna como resultado como grafo
     gr = Graph()
     gr.parse(data=r.text)

@@ -143,7 +143,15 @@ def browser_cerca():
 
     logger.info("Grafo respuesta")
     logger.info(gresp)
-    return 1
+    print gresp
+    activitats_matrix = []
+
+    for item in gresp.subjects(RDF.type, ECSDI.actividad):
+        logger.info(1)
+        activitats = [gresp.value(subject=item, predicate=ECSDI.tipo_de_actividad)]
+        activitats_matrix.append(activitats)
+
+    return render_template('activities.html', actividades= activitats_matrix)
 
 
 @app.route("/Stop")

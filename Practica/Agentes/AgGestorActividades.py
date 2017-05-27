@@ -183,8 +183,6 @@ def communication():
                     content = ECSDI['respuesta_de_actividades' + str(get_count())]
                     logger.info(json_data)
                     for place in json_data:
-                        logger.info(1)
-                        logger.info(json_data[place])
                         act_obj = ECSDI['activity' + str(get_count())]
                         loc_obj = ECSDI['location' + str(get_count())]
                         periodo = ECSDI['period' + str(get_count())]
@@ -192,8 +190,11 @@ def communication():
 
                         # Localizacion
                         gr.add((loc_obj, RDF.type, ECSDI.localizacion))
-                        gr.add((loc_obj, ECSDI.longitud, place.lat))  # Parsear de la llamada a la api
-                        gr.add((loc_obj, ECSDI.latitud, place.lng))  # Parsear de la llamada a la api
+                        # gr.add((loc_obj, ECSDI.longitud, place.lat))  # Parsear de la llamada a la api
+                        # gr.add((loc_obj, ECSDI.latitud, place.lng))  # Parsear de la llamada a la api
+
+                        gr.add((loc_obj, ECSDI.longitud, Literal("41.39")))  # Parsear de la llamada a la api
+                        gr.add((loc_obj, ECSDI.latitud, Literal("2.14")))  # Parsear de la llamada a la api
 
                         # Periodo
                         gr.add((periodo, RDF.type, ECSDI.periodo))
@@ -227,7 +228,8 @@ def communication():
                                    sender=DirectoryAgent.uri,
                                    msgcnt=get_count())
 
-    return gr
+    serialize = gr.serialize(format='xml')
+    return serialize, 200
 
 @app.route("/Stop")
 def stop():
