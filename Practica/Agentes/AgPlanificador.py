@@ -151,7 +151,7 @@ def communication():
                 # Anadir mas parametros
                 restriccions_ciudad = {}
                 restriccions_ciudad['ciudadNombre']=miciudad
-                buscar_actividades(**restriccions_ciudad)
+                gr = buscar_actividades(**restriccions_ciudad)
 
                 logger.info("Mensaje peticionn de plan")
                 logger.info(miciudad)
@@ -168,8 +168,9 @@ def communication():
 
     logger.info('Respondemos a la peticion')
 
-    serialize = gr.serialize(format='xml')
-    return serialize, 200
+    #serialize = gr.serialize(format='xml')
+    #return serialize, 200
+    return gr
 
 
 
@@ -192,6 +193,7 @@ def buscar_actividades(ciudadNombre='Barcelona'):
                                   msgcnt=get_count(),
                                   content=content), agente_actividades.address)
 
+    return gr
 
 @app.route("/Stop")
 def stop():

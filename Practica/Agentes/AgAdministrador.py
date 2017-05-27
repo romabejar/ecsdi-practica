@@ -138,6 +138,11 @@ def browser_cerca():
     planificador = get_agent_info(agn.PlannerAgent, DirectoryAgent, AdministrativeAgent,get_count())
     gresp = send_message(build_message(gr, perf=ACL.request, sender=AdministrativeAgent.uri, receiver=planificador.uri, msgcnt=get_count(),
                           content=contentResult), planificador.address)
+
+
+
+    logger.info("Grafo respuesta")
+    logger.info(gresp)
     return 1
 
 

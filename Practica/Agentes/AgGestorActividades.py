@@ -168,6 +168,8 @@ def communication():
                     logger.info(miciudad)
 
                     json_data = buscar_actividades_externamente("Barcelona", "Spain", 20000)
+                    gr = Graph()
+
                     # Grafo donde retornaremos el resultado
                     # Hago bind de las ontologias que usaremos en el grafo
 
@@ -176,42 +178,47 @@ def communication():
                     # gr.bind('myns_loc', myns_loc)
                     # gr.bind('myns_periodo', myns_periodo)
                     # gr.bind('myns_compania', myns_compania)
-                    #
-                    # for place in json_data.places:
-                    #     plc_obj = myns_act[place.place_id]
-                    #     loc_obj = myns_loc[place.place_id]
-                    #     periodo = myns_periodo[place.place_id]
-                    #     compania = myns_compania[place.place_id]
-                    #
-                    #     # Localizacion
-                    #     gr.add((loc_obj, myns_atr.longitud, Literal("15.9")))  # Parsear de la llamada a la api
-                    #     gr.add((loc_obj, myns_atr.latitud, Literal("12.9")))  # Parsear de la llamada a la api
-                    #
-                    #     # Periodo
-                    #     gr.add((periodo, myns_atr.inicio, Literal("11:00")))
-                    #     gr.add((periodo, myns_atr.fin, Literal("12:50")))
-                    #
-                    #     # Compania
-                    #     gr.add((compania, myns_atr.nombre, Literal("Roman Airlines")))
-                    #     gr.add((compania, myns_atr.ofrece, plc_obj))
-                    #
-                    #     # Actividad
-                    #     gr.add((plc_obj, myns_atr.esUn, myns.activiad))
-                    #     gr.add((plc_obj, myns_atr.coste, Literal("15")))
-                    #     gr.add((plc_obj, myns_atr.se_encuentra_en, loc_obj))
-                    #     gr.add((plc_obj, myns_atr.tipo_de_actividad, Literal("Fiesta")))
-                    #     gr.add((plc_obj, myns_atr.tiene_como_horario, periodo))
-                    #     gr.add((plc_obj, myns_atr.es_ofrecido_por, compania))
-                    #
-                    #     gr = build_message(gr,
-                    #                        ACL['inform-'],
-                    #                        sender=AgentePlanificador.uri,
-                    #                        msgcnt=mss_cnt,
-                    #                        receiver=msgdic['sender'])
-                    #
-                    # mss_cnt += 1
 
-                    return True
+
+                    content = ECSDI['respuesta_de_actividades' + str(get_count())]
+                    logger.info(json_data)
+                    for place in json_data:
+                        logger.info(1)
+                        logger.info(json_data[place])
+                        act_obj = ECSDI['activity' + str(get_count())]
+                        loc_obj = ECSDI['location' + str(get_count())]
+                        periodo = ECSDI['period' + str(get_count())]
+                        compania = ECSDI['company' + str(get_count())]
+
+                        # Localizacion
+                        gr.add((loc_obj, RDF.type, ECSDI.localizacion))
+                        gr.add((loc_obj, ECSDI.longitud, place.lat))  # Parsear de la llamada a la api
+                        gr.add((loc_obj, ECSDI.latitud, place.lng))  # Parsear de la llamada a la api
+
+                        # Periodo
+                        gr.add((periodo, RDF.type, ECSDI.periodo))
+                        gr.add((periodo, ECSDI.inicio, Literal("11:00")))
+                        gr.add((periodo, ECSDI.fin, Literal("12:50")))
+
+                        # Compania
+                        gr.add((compania, RDF.type, ECSDI.compania))
+                        gr.add((compania, ECSDI.nombre, Literal("Roman Airlines")))
+                        gr.add((compania, ECSDI.ofrece, URIRef(act_obj)))
+
+                        # Actividad
+                        gr.add((act_obj, RDF.type, ECSDI.activiad))
+                        gr.add((act_obj, ECSDI.coste, Literal("15")))
+                        gr.add((act_obj, ECSDI.se_encuentra_en, loc_obj))
+                        gr.add((act_obj, ECSDI.tipo_de_actividad, Literal("Fiesta")))
+                        gr.add((act_obj, ECSDI.tiene_como_horario, URIRef(periodo)))
+                        gr.add((act_obj, ECSDI.es_ofrecido_por, URIRef(compania)))
+                        gr.add((content, ECSDI.se_construye_de_actividades, URIRef(act_obj)))
+
+                gr = build_message(gr,
+                                   ACL['inform-'],
+                                   sender=AgGestorActividades.uri,
+                                   msgcnt=mss_cnt,
+                                   receiver=msgdic['sender'])
 
 
             else:
@@ -220,6 +227,7 @@ def communication():
                                    sender=DirectoryAgent.uri,
                                    msgcnt=get_count())
 
+    return gr
 
 @app.route("/Stop")
 def stop():
@@ -260,19 +268,19 @@ def buscar_actividades_externamente(destinationCity="Barcelona", destinationCoun
 
     YOUR_API_KEY = 'AIzaSyCyjudYWWbnReJa3LdTgfnQXgLxIyXvLSk'
     google_places = GooglePlaces(YOUR_API_KEY)
-    logger.info(3)
 
-    location = "Barcelona, Spain"
+
+    location = destinationCity + ", " + destinationCountry
     keyword = "Discoteca"
     type = "night_club"
-    logger.info(4)
+
 
     # You may prefer to use the text_search API, instead.
     query_result = google_places.nearby_search(
         location=location, keyword=keyword,
         radius=radius, types=type)
     # placestring = "Name: %s, GeoLoc: %s, Reference: %s, Phone: %s \n"(places[0].name, places[0].geo_location, places[0].reference, places[0].local_phone_number)
-    logger.info(5)
+
     resultado = {}
     i = 0
     for place in query_result.places:
@@ -296,12 +304,9 @@ def buscar_actividades_externamente(destinationCity="Barcelona", destinationCoun
         # print place.website
         # print place.url
         resultado[i] = place_json
-        print i
-        print resultado[i]
         i = i + 1
 
     json_data = json.dumps(resultado)
-    logger.info(json_data)
     return json_data
 
 if __name__ == '__main__':
