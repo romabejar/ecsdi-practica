@@ -11,14 +11,20 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
   xml:base="http://www.owl-ontologies.com/Ontology_ECSDI_plan_de_viaje.owl">
   <owl:Ontology rdf:about=""/>
-  <owl:Class rdf:ID="plan_de_un_dia">
-    <rdfs:subClassOf>
-      <owl:Class rdf:ID="plan"/>
-    </rdfs:subClassOf>
+  <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:ID="peticion_de_transportes"/>
+      <owl:Class rdf:ID="peticion_de_plan"/>
+    </owl:unionOf>
   </owl:Class>
   <owl:Class rdf:ID="transporte">
     <rdfs:subClassOf>
       <owl:Class rdf:ID="servicio"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="plan_de_un_dia">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="plan"/>
     </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:ID="estacion">
@@ -70,11 +76,17 @@
       <owl:Class rdf:about="#actividad"/>
     </rdfs:subClassOf>
   </owl:Class>
+  <owl:Class>
+    <owl:unionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="#peticion_de_transportes"/>
+      <owl:Class rdf:about="#peticion_de_plan"/>
+    </owl:unionOf>
+  </owl:Class>
   <owl:Class rdf:ID="taxi">
     <rdfs:subClassOf rdf:resource="#transporte"/>
   </owl:Class>
   <owl:Class rdf:ID="periodo"/>
-  <owl:Class rdf:ID="peticion_de_transportes">
+  <owl:Class rdf:about="#peticion_de_transportes">
     <rdfs:subClassOf rdf:resource="#peticion"/>
   </owl:Class>
   <owl:Class rdf:ID="aeropuerto">
@@ -89,11 +101,10 @@
   <owl:Class rdf:ID="respuesta_de_transportes">
     <rdfs:subClassOf rdf:resource="#respuesta"/>
   </owl:Class>
-  <owl:Class rdf:ID="peticion_de_plan">
+  <owl:Class rdf:about="#peticion_de_plan">
     <rdfs:subClassOf rdf:resource="#peticion"/>
   </owl:Class>
   <owl:Class rdf:ID="reserva">
-    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
     <rdfs:subClassOf>
       <owl:Restriction>
         <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
@@ -103,6 +114,7 @@
         </owl:onProperty>
       </owl:Restriction>
     </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
   </owl:Class>
   <owl:Class rdf:ID="bus">
     <rdfs:subClassOf rdf:resource="#transporte"/>
@@ -134,17 +146,6 @@
   <owl:Class rdf:ID="vuelo">
     <rdfs:subClassOf rdf:resource="#transporte"/>
   </owl:Class>
-  <owl:ObjectProperty rdf:ID="tiene_como_periodo_susceptible_de_vuelta">
-    <rdfs:range rdf:resource="#periodo"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#peticion_de_transportes"/>
-          <owl:Class rdf:about="#peticion_de_plan"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="tiene_como_pedidor">
     <rdfs:range rdf:resource="#usuario"/>
     <rdfs:domain rdf:resource="#peticion_de_plan"/>
@@ -181,10 +182,6 @@
     <rdfs:domain rdf:resource="#respuesta_de_actividades"/>
     <rdfs:range rdf:resource="#actividad"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="es_hecha_por">
-    <rdfs:range rdf:resource="#usuario"/>
-    <rdfs:domain rdf:resource="#valoracion"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="se_encuentra_en">
     <rdfs:range rdf:resource="#localizacion"/>
     <rdfs:domain>
@@ -198,6 +195,10 @@
       </owl:Class>
     </rdfs:domain>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="es_hecha_por">
+    <rdfs:range rdf:resource="#usuario"/>
+    <rdfs:domain rdf:resource="#valoracion"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="tiene_como_plan">
     <rdfs:domain rdf:resource="#peticion_de_contrato_de_pago"/>
     <rdfs:range rdf:resource="#plan_de_viaje"/>
@@ -206,13 +207,13 @@
     <rdfs:domain rdf:resource="#valoracion"/>
     <rdfs:range rdf:resource="#servicio"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="tiene_como_actividades_de_noche">
-    <rdfs:domain rdf:resource="#plan_de_un_dia"/>
-    <rdfs:range rdf:resource="#actividad"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="ha_contratado">
     <rdfs:range rdf:resource="#plan_de_viaje"/>
     <rdfs:domain rdf:resource="#usuario"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="tiene_como_actividades_de_noche">
+    <rdfs:domain rdf:resource="#plan_de_un_dia"/>
+    <rdfs:range rdf:resource="#actividad"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="se_constituye_de_transportes">
     <rdfs:domain rdf:resource="#respuesta_de_transportes"/>
@@ -245,13 +246,13 @@
     <rdfs:range rdf:resource="#valoracion"/>
     <rdfs:domain rdf:resource="#servicio"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="tiene_para_cada_dia">
-    <rdfs:range rdf:resource="#plan_de_un_dia"/>
-    <rdfs:domain rdf:resource="#plan_de_viaje"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="tiene_como_rango_de_precios_de_alojamiento">
     <rdfs:domain rdf:resource="#peticion_de_plan"/>
     <rdfs:range rdf:resource="#rango_de_precios"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="tiene_para_cada_dia">
+    <rdfs:range rdf:resource="#plan_de_un_dia"/>
+    <rdfs:domain rdf:resource="#plan_de_viaje"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:ID="tiene_como_origen">
     <rdfs:domain>
@@ -306,17 +307,6 @@
   <owl:ObjectProperty rdf:ID="como_alojamiento_del_plan">
     <rdfs:range rdf:resource="#alojamiento"/>
     <rdfs:domain rdf:resource="#plan_de_viaje"/>
-  </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:ID="tiene_como_periodo_susceptible_de_ida">
-    <rdfs:range rdf:resource="#periodo"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#peticion_de_transportes"/>
-          <owl:Class rdf:about="#peticion_de_plan"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="#se_hace_sobre">
     <rdfs:range rdf:resource="#servicio"/>
@@ -375,6 +365,10 @@
     <rdfs:domain rdf:resource="#reserva"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="tiene_como_data_de_vuelta">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="#peticion_de_plan"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="salida">
     <rdfs:domain rdf:resource="#transporte"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
@@ -413,6 +407,10 @@
   <owl:DatatypeProperty rdf:ID="coste">
     <rdfs:domain rdf:resource="#servicio"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="tiene_como_data_de_ida">
+    <rdfs:domain rdf:resource="#peticion_de_plan"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="precio_maximo">
     <rdfs:domain rdf:resource="#rango_de_precios"/>
